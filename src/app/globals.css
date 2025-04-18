@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #161e30;
 }
 
 @theme inline {
@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #121620;
     --foreground: #ededed;
   }
 }
@@ -22,5 +22,45 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+#__next-build-watcher,
+#__next-static-indicator,
+[data-nextjs-dialog],
+[data-nextjs-toast],
+[data-nextjs-terminal] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
+
+@theme {
+  --animate-flowInRight: flowInRight 2s ease-out;
+  --animate-flowInLeft: flowInLeft 2s ease-out;
+
+  @keyframes flowInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-40%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes flowInLeft {
+    0% {
+      opacity: 0;
+      transform : translateX(40%)
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
