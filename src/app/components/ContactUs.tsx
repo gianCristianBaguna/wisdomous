@@ -54,7 +54,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-[450px] bg-gradient-to-b from-[#0f1724] to-[#0c1119] p-8 rounded-lg shadow-xl relative overflow-hidden border border-white/10">
+    <div className="w-full max-w-[450px] bg-gradient-to-b from-[#0f1724] to-[#0c1119] p-8 rounded-lg shadow-xl relative overflow-hidden border border-white/10">
       {/* Elegant top accent */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white to-transparent"></div>
 
@@ -79,7 +79,7 @@ export default function ContactForm() {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor="name" className="block text-white/70 text-xs uppercase tracking-wider mb-2 font-light">
               Name
@@ -149,7 +149,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`px-6 py-3 bg-transparent border border-white/30 text-white font-light rounded-sm transition-all flex items-center justify-center hover:bg-white/5 hover:border-white/50 ${
+            className={`px-6 py-3 bg-[#00a7e0] border border-white/30 text-white font-light rounded-sm transition-all flex items-center justify-center hover:bg-white/5 hover:border-white/50 ${
               isSubmitting ? "opacity-70 cursor-not-allowed" : ""
             }`}
           >
