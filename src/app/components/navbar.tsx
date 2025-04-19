@@ -19,11 +19,12 @@ const Navbar = () => {
         <Image
           src={navLogo}
           alt="Hero"
-          width={60}
+          width={80}
           height={40}
           className="object-contain drop-shadow-2xl"
         />
       </Link>
+        <h3 className="-ml-240">WISDOMOUS</h3>
 
       <div className="md:hidden z-10">
         {menuOpen ? (
