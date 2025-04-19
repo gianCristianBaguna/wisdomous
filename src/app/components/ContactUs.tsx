@@ -28,12 +28,10 @@ export default function ContactForm() {
     setIsSubmitting(true)
 
     try {
-      // Replace with your actual form submission logic
       await new Promise((resolve) => setTimeout(resolve, 1000))
       console.log("Form submitted:", formData)
       setSubmitStatus("success")
 
-      // Optional: Reset form after successful submission
       setFormData({
         name: "",
         email: "",
@@ -46,7 +44,6 @@ export default function ContactForm() {
     } finally {
       setIsSubmitting(false)
 
-      // Reset status after 5 seconds
       setTimeout(() => {
         setSubmitStatus(null)
       }, 5000)
@@ -55,7 +52,6 @@ export default function ContactForm() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center py-20 px-4 bg-gradient-to-b from-[#0a0f1a] to-[#0f172a]">
-      {/* Static background elements - no animations */}
       <div className="absolute top-[-200px] left-[-150px] w-[600px] h-[600px] bg-[#00a7e0]/10 rounded-full opacity-30"></div>
       <div className="absolute bottom-[-150px] right-[-100px] w-[500px] h-[500px] bg-[#9333ea]/10 rounded-full opacity-30"></div>
 
@@ -74,9 +70,7 @@ export default function ContactForm() {
         </div>
 
         <div className="relative mx-auto max-w-2xl">
-          {/* Simplified panel without blur effects */}
           <div className="relative bg-[#111827] border border-white/10 rounded-2xl p-8 md:p-10 shadow-lg">
-            {/* Form status messages */}
             {submitStatus === "success" && (
               <div className="mb-6 p-4 bg-[#00a7e0]/10 border border-[#00a7e0]/30 rounded-lg flex items-center">
                 <CheckCircle className="w-5 h-5 text-[#00a7e0] mr-3 flex-shrink-0" />
