@@ -19,7 +19,6 @@ const Navbar = () => {
           height={40}
           className=" object-contain drop-shadow-2xl ml-10"
         />
-          <span className="ml-3 text-white text-lg font-semibold">Wisdomous Tech</span>
       </Link>
 
       <ul className="flex mr-20 space-x-20 text-white">
@@ -33,7 +32,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            href="#about"
+            href="/#about"
             className="relative text-base font-medium text-white transition-colors hover:text-cyan-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-cyan-400 after:transition-all hover:after:w-full"
           >
             About

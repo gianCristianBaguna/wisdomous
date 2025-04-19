@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Sparkles, Code, Layers } from "lucide-react"
+import Link from "next/link"
 
 const slides = [
   {
@@ -237,10 +238,13 @@ export const HeroPage = () => {
             </div>
 
             {/* Button with simplified hover effects */}
+            <Link
+            href="/contact">
             <button className="mt-4 px-8 py-3 bg-[#00a7e0] text-white font-semibold rounded-xl shadow-lg hover:bg-[#0077cc] transition-colors duration-300 flex items-center justify-center gap-2">
-              <span>Explore Solutions</span>
+              <span>Contact Us</span>
               <Sparkles className="w-4 h-4" />
             </button>
+          </Link>
           </motion.div>
         </AnimatePresence>
       </div>
