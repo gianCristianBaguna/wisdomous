@@ -23,13 +23,11 @@ export const AboutUs = () => {
 
   return (
     <section ref={sectionRef} className="relative py-20 overflow-hidden bg-gradient-to-b from-[#0a0f1a] to-[#0f172a]">
-      {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#0a0f1a] to-transparent"></div>
       <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#00a7e0]/10 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#9333ea]/10 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section header */}
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -60,7 +58,6 @@ export const AboutUs = () => {
           </motion.p>
         </div>
 
-        {/* Company values */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {[
             {
@@ -135,7 +132,6 @@ export const AboutUs = () => {
           </div>
         </div> */}
 
-        {/* Company mission */}
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}

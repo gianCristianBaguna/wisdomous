@@ -1,20 +1,28 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, Sparkles, Code, Layers } from "lucide-react"
-import Link from "next/link"
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  Code,
+  Layers,
+} from "lucide-react";
+import Link from "next/link";
 
 const slides = [
   {
     title: "CUSTOM SOLUTIONS",
     description: (
       <>
-        We craft tailored software solutions designed to fit your unique business needs. From lightweight{" "}
+        We craft tailored software solutions designed to fit your unique
+        business needs. From lightweight{" "}
         <span className="text-[#00a7e0] font-semibold">web apps</span> to
-        <span className="text-[#00a7e0] font-semibold"> internal tools</span>, we focus on clean code, scalability, and
-        a seamless user experience. Our agile approach ensures your vision is built efficiently with flexibility and
-        precision.
+        <span className="text-[#00a7e0] font-semibold"> internal tools</span>,
+        we focus on clean code, scalability, and a seamless user experience. Our
+        agile approach ensures your vision is built efficiently with flexibility
+        and precision.
       </>
     ),
     icon: <Code className="w-8 h-8 text-[#00a7e0]" />,
@@ -23,20 +31,30 @@ const slides = [
     title: "MOBILE AND WEB DEVELOPMENT",
     description: (
       <>
-        We design and build responsive web platforms and mobile applications that deliver seamless performance across
-        all devices. From intuitive UIs to powerful backends, our solutions are crafted for speed, scalability, and user
-        experience—whether it's a website, a mobile app, or both.
+        We design and build responsive web platforms and mobile applications
+        that deliver seamless performance across all devices. From intuitive UIs
+        to powerful backends, our solutions are crafted for speed, scalability,
+        and user experience—whether it's a website, a mobile app, or both.
       </>
     ),
     icon: <Layers className="w-8 h-8 text-[#00a7e0]" />,
   },
-]
+];
 
 export const HeroPage = () => {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const heroRef = useRef(null)
-  const [particles, setParticles] = useState<{ id: number; x: number; y: number; size: number; duration: number; delay: number }[]>([])
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef(null);
+  const [particles, setParticles] = useState<
+    {
+      id: number;
+      x: number;
+      y: number;
+      size: number;
+      duration: number;
+      delay: number;
+    }[]
+  >([]);
 
   // Generate fewer particles for better performance
   useEffect(() => {
@@ -47,13 +65,13 @@ export const HeroPage = () => {
       size: Math.random() * 2 + 1,
       duration: Math.random() * 15 + 10,
       delay: Math.random() * 5,
-    }))
-    setParticles(newParticles)
-  }, [])
+    }));
+    setParticles(newParticles);
+  }, []);
 
   // Throttled mouse movement for better performance
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout | null = null
+    let timeoutId: NodeJS.Timeout | null = null;
     interface MousePosition {
       x: number;
       y: number;
@@ -63,38 +81,38 @@ export const HeroPage = () => {
       if (timeoutId) return;
 
       timeoutId = setTimeout(() => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-      setMousePosition({
-        x: (clientX / innerWidth) * 2 - 1,
-        y: (clientY / innerHeight) * 2 - 1,
-      });
-      timeoutId = null;
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
+        setMousePosition({
+          x: (clientX / innerWidth) * 2 - 1,
+          y: (clientY / innerHeight) * 2 - 1,
+        });
+        timeoutId = null;
       }, 50); // Throttle to 50ms
     };
 
-    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mousemove", handleMouseMove);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      if (timeoutId) clearTimeout(timeoutId)
-    }
-  }, [])
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, []);
 
   const scrollLeft = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
-  }
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
 
   const scrollRight = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
-  }
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
 
   // Auto-scroll slides (longer interval for better performance)
   useEffect(() => {
     const interval = setInterval(() => {
-      scrollRight()
-    }, 10000)
-    return () => clearInterval(interval)
-  }, [currentSlide])
+      scrollRight();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [currentSlide]);
 
   return (
     <div
@@ -141,7 +159,9 @@ export const HeroPage = () => {
         style={{
           top: "-200px",
           left: "-150px",
-          transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * -15}px)`,
+          transform: `translate(${mousePosition.x * -15}px, ${
+            mousePosition.y * -15
+          }px)`,
           transition: "transform 0.5s ease-out",
           willChange: "transform",
         }}
@@ -152,7 +172,9 @@ export const HeroPage = () => {
         style={{
           bottom: "-150px",
           right: "-100px",
-          transform: `translate(${mousePosition.x * 15}px, ${mousePosition.y * 15}px)`,
+          transform: `translate(${mousePosition.x * 15}px, ${
+            mousePosition.y * 15
+          }px)`,
           transition: "transform 0.5s ease-out",
           willChange: "transform",
         }}
@@ -223,7 +245,9 @@ export const HeroPage = () => {
             </div>
 
             {/* Icon with simplified animation */}
-            <div className="p-4 rounded-full bg-white/5 border border-white/10">{slides[currentSlide].icon}</div>
+            <div className="p-4 rounded-full bg-white/5 border border-white/10">
+              {slides[currentSlide].icon}
+            </div>
 
             {/* Title with simplified animation */}
             <h1 className="font-montserrat text-[#00a7e0] text-5xl md:text-6xl font-black tracking-widest drop-shadow-lg">
@@ -238,16 +262,16 @@ export const HeroPage = () => {
             </div>
 
             {/* Button with simplified hover effects */}
-            <Link
-            href="/contact">
-            <button className="mt-4 px-8 py-3 bg-[#00a7e0] text-white font-semibold rounded-xl shadow-lg hover:bg-[#0077cc] transition-colors duration-300 flex items-center justify-center gap-2">
-              <span>Contact Us</span>
-              <Sparkles className="w-4 h-4" />
-            </button>
-          </Link>
+            <Link href="/contact">
+              <button className="mt-4 px-8 py-3 bg-[#00a7e0] text-white font-semibold rounded-xl shadow-lg hover:bg-[#0077cc] transition-colors duration-300 flex items-center justify-center gap-2">
+                <span>Contact Us</span>
+                <Sparkles className="w-4 h-4" />
+              </button>
+            </Link>
           </motion.div>
         </AnimatePresence>
       </div>
+
     </div>
-  )
-}
+  );
+};
