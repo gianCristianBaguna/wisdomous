@@ -1,87 +1,131 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Menu, X } from "lucide-react";
-import navLogo from "@/app/img/logo-nav.png";
-import profileLogo from "@/app/img/profile.png";
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { Menu, X } from "lucide-react"
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
-    <nav className="relative bg-[#121620] shadow-md border-b border-gray-600 px-6 py-4 flex items-center justify-between font-montserrat fixed top-0 left-0 right-0 z-50">
-      <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-[#00a7e0] opacity-20 blur-[120px] rounded-full z-0 pointer-events-none"></div>
-      <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-[#6c63ff] opacity-20 blur-[120px] rounded-full z-0 pointer-events-none"></div>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#0a0f1a]/95 backdrop-blur-sm" : "bg-[#0a0f1a]"
+      } py-3`}
+    >
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-3 z-10">
+            <div className="w-10 h-10 rounded-full bg-[#00a7e0]/20 flex items-center justify-center">
+              <span className="text-[#00a7e0] text-2xl font-bold">W</span>
+            </div>
+            <span className="text-white font-bold text-lg">WISDOMOUS</span>
+          </Link>
 
-      <Link href="/" className="z-10">
-        <Image
-          src={navLogo}
-          alt="Hero"
-          width={80}
-          height={40}
-          className="object-contain drop-shadow-2xl"
-        />
-      </Link>
-        <h3 className="-ml-240">WISDOMOUS</h3>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-white focus:outline-none md:hidden z-10"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
 
-      <div className="md:hidden z-10">
-        {menuOpen ? (
-          <X
-            size={30}
-            className="text-white cursor-pointer"
-            onClick={() => setMenuOpen(false)}
-          />
-        ) : (
-          <Menu
-            size={30}
-            className="text-white cursor-pointer"
-            onClick={() => setMenuOpen(true)}
-          />
-        )}
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link
+              href="/"
+              className="text-white hover:text-[#00a7e0] transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-[#00a7e0] after:transition-all hover:after:w-full"
+            >
+              Home
+            </Link>
+            <Link
+              href="/#about"
+              className="text-white hover:text-[#00a7e0] transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-[#00a7e0] after:transition-all hover:after:w-full"
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="text-white hover:text-[#00a7e0] transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-[#00a7e0] after:transition-all hover:after:w-full"
+            >
+              Contact
+            </Link>
+            <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-5 h-5 text-white"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div
+          className={`fixed inset-0 bg-[#0a0f1a] z-40 transform transition-transform duration-300 ease-in-out ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
+          } md:hidden`}
+        >
+          <div className="flex flex-col items-center justify-center h-full space-y-8 text-lg">
+            <Link
+              href="/"
+              className="text-white hover:text-[#00a7e0] transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
+              href="/#about"
+              className="text-white hover:text-[#00a7e0] transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="text-white hover:text-[#00a7e0] transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contact
+            </Link>
+            <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-6 h-6 text-white"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <ul
-        className={`${
-          menuOpen
-            ? "flex flex-col items-center bg-[#121620] absolute top-16 left-0 w-full space-y-6 py-6 z-40"
-            : "hidden"
-        } md:flex md:flex-row md:static md:space-x-20 md:mr-20 text-white transition-all duration-300`}
-      >
-        <li>
-          <Link
-            href="/"
-            onClick={() => setMenuOpen(false)}
-            className="relative text-base font-medium transition-colors hover:text-cyan-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-cyan-400 after:transition-all hover:after:w-full"
-          >
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/#about"
-            onClick={() => setMenuOpen(false)}
-            className="relative text-base font-medium transition-colors hover:text-cyan-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-cyan-400 after:transition-all hover:after:w-full"
-          >
-            About
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/contact"
-            onClick={() => setMenuOpen(false)}
-            className="relative text-base font-medium transition-colors hover:text-cyan-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-cyan-400 after:transition-all hover:after:w-full"
-          >
-            Contact
-          </Link>
-        </li>
-        <li>
-          <Image src={profileLogo} alt="Hero" width={20} height={20} />
-        </li>
-      </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

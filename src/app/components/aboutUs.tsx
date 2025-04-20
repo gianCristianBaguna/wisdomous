@@ -22,8 +22,10 @@ export const AboutUs = () => {
   }
 
   return (
-    <section ref={sectionRef} className="relative py-20 overflow-hidden bg-gradient-to-b from-[#0a0f1a] to-[#0f172a]">
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#0a0f1a] to-transparent"></div>
+    <section ref={sectionRef} className="relative py-20 overflow-hidden">
+      {/* Removed the from-to gradient to allow parent gradient to flow through */}
+
+      {/* Gradient orbs positioned to blend with hero section */}
       <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#00a7e0]/10 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#9333ea]/10 rounded-full blur-3xl"></div>
 
@@ -108,30 +110,6 @@ export const AboutUs = () => {
           ))}
         </div>
 
-        {/* Company stats */}
-        {/* <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { value: "10+", label: "Years Experience" },
-              { value: "200+", label: "Projects Completed" },
-              { value: "50+", label: "Team Members" },
-              { value: "99%", label: "Client Satisfaction" },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                custom={i}
-                initial="hidden"
-                variants={fadeInUpVariant}
-                animate={isInView ? "visible" : "hidden"}
-                className="text-center"
-              >
-                <div className="text-[#00a7e0] text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
-                <div className="text-gray-300">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div> */}
-
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -185,8 +163,7 @@ export const AboutUs = () => {
                     to thrive in the digital age."
                   </p>
                   <div className="mt-4 text-gray-400">- Aljason Javier</div>
-                  <div className="mt-4 text-gray-400">CEO</div>
-
+                  <div className="text-gray-400">CEO</div>
                 </div>
               </div>
             </div>
