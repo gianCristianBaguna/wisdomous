@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import NavLogo from "@/app/img/logo-nav.png";
 import Image from "next/image";
 
 const Navbar = () => {
@@ -31,7 +30,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 z-10">
-            <Image src={NavLogo} width={50} height={50} alt="Logo" />
+            <Image src="/img/logo-nav.png" width={50} height={50} alt="Logo" />
             <span className="text-white font-bold text-lg">WISDOMOUS</span>
           </Link>
 
