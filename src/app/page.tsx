@@ -9,7 +9,7 @@ import FootNote from "@/app/components/footer";
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-hidden">
       <Navbar />
       <HeroPage />
       <section
@@ -17,6 +17,6 @@ export default function Home() {
             <AboutUs />
       </section>
       <FootNote />
-    </>
+    </div>
   );
 }
