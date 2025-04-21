@@ -23,6 +23,8 @@ const Navbar = () => {
         scrolled ? "bg-[#0a0f1a]/95 backdrop-blur-sm" : "bg-[#0a0f1a]"
       } py-3`}
     >
+      <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-[#00a7e0] opacity-20 blur-[120px] rounded-full z-0 pointer-events-none"></div>
+      <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-[#6c63ff] opacity-20 blur-[120px] rounded-full z-0 pointer-events-none"></div>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
