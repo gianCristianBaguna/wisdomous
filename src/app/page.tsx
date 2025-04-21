@@ -1,7 +1,5 @@
-import Image from "next/image";
 import { HeroPage } from "@/components/hero-page";
 import Navbar from "@/components/navbar";
-import ContactForm from "@/components/ContactUs";
 import {AboutUs} from "@/components/aboutUs";
 import FootNote from "@/components/footer";
 
