@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { Send, CheckCircle, AlertCircle } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,50 +10,49 @@ export default function ContactForm() {
     email: "",
     subject: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(null)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      console.log("Form submitted:", formData)
-      setSubmitStatus("success")
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log("Form submitted:", formData);
+      setSubmitStatus("success");
 
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
-      })
+      });
     } catch (error) {
-      console.error("Error submitting form:", error)
-      setSubmitStatus("error")
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
     } finally {
-      setIsSubmitting(false)
-
+      setIsSubmitting(false);
       setTimeout(() => {
-        setSubmitStatus(null)
-      }, 5000)
+        setSubmitStatus(null);
+      }, 5000);
     }
-  }
+  };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center py-20 px-4 bg-gradient-to-b from-[#0a0f1a] to-[#0f172a]">
-      <div className="absolute top-[-200px] left-[-150px] w-[600px] h-[600px] bg-[#00a7e0]/10 rounded-full opacity-30"></div>
-      <div className="absolute bottom-[-150px] right-[-100px] w-[500px] h-[500px] bg-[#9333ea]/10 rounded-full opacity-30"></div>
+    <div className="relative min-h-screen flex items-center justify-center py-20 px-4 bg-gradient-to-b from-[#0a0f1a] to-[#0f172a] ">
+      <div className="absolute top-[-200px] left-[-150px] w-[600px] h-[600px] bg-[#00a7e0]/10 rounded-full opacity-30" />
+      <div className="absolute bottom-[-150px] right-[-100px] w-[500px] h-[500px] bg-[#9333ea]/10 rounded-full opacity-30" />
 
       <div className="relative z-10 w-full max-w-4xl">
         <div className="text-center mb-12">
@@ -64,8 +63,7 @@ export default function ContactForm() {
             CONTACT <span className="text-[#00a7e0]">US</span>
           </h2>
           <p className="text-gray-300 max-w-xl mx-auto">
-            Have a project in mind or want to learn more about our services? Get in touch with our team and we'll get
-            back to you shortly.
+            Have a project in mind or want to learn more about our services? Get in touch with our team and we'll get back to you shortly.
           </p>
         </div>
 
@@ -88,10 +86,7 @@ export default function ContactForm() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-[#00a7e0] text-sm uppercase tracking-wider mb-2 font-light"
-                  >
+                  <label htmlFor="name" className="block text-[#00a7e0] text-sm uppercase tracking-wider mb-2 font-light">
                     Name
                   </label>
                   <input
@@ -107,10 +102,7 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-[#00a7e0] text-sm uppercase tracking-wider mb-2 font-light"
-                  >
+                  <label htmlFor="email" className="block text-[#00a7e0] text-sm uppercase tracking-wider mb-2 font-light">
                     Email
                   </label>
                   <input
@@ -127,10 +119,7 @@ export default function ContactForm() {
               </div>
 
               <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-[#00a7e0] text-sm uppercase tracking-wider mb-2 font-light"
-                >
+                <label htmlFor="subject" className="block text-[#00a7e0] text-sm uppercase tracking-wider mb-2 font-light">
                   Subject
                 </label>
                 <input
@@ -146,10 +135,7 @@ export default function ContactForm() {
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-[#00a7e0] text-sm uppercase tracking-wider mb-2 font-light"
-                >
+                <label htmlFor="message" className="block text-[#00a7e0] text-sm uppercase tracking-wider mb-2 font-light">
                   Message
                 </label>
                 <textarea
@@ -189,5 +175,5 @@ export default function ContactForm() {
         </div>
       </div>
     </div>
-  )
+  );
 }
