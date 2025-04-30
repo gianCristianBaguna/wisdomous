@@ -22,9 +22,7 @@ export const AboutUs = () => {
   }
 
   return (
-    <section ref={sectionRef} className="relative py-20 overflow-hidden">
-     
-
+    <section ref={sectionRef} className="relative py-20 overflow-hidden bg-[#0a0f1a] text-white">
       
       <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#00a7e0]/10 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#9333ea]/10 rounded-full blur-3xl"></div>

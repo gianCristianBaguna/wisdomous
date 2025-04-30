@@ -16,7 +16,7 @@ const FacebookIcon = () => (
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#0a0f1a] text-white px-6 sm:px-20 py-10 border-t border-white/10 z-10 mt-20">
+    <footer className="relative bg-[#0a0f1a] text-white px-6 sm:px-20 py-10 border-t border-white/10 z-10 ">
       <div className="absolute top-[-150px] right-[-100px] w-[300px] h-[300px] bg-[#00a7e0]/20 rounded-full blur-2xl z-0"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">

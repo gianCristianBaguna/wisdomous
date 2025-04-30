@@ -5,4 +5,13 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 }
 
+module.exports = {
+  devIndicators: {
+    autoPrerender: false,
+  },
+  experimental: {
+    serverComponentsExternalPackages: ["your-package-name"],
+  },
+}
+
 export default nextConfig;
