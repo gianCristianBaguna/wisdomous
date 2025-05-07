@@ -3,6 +3,8 @@
 import type React from "react";
 import { useState } from "react";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { ToastContainer, toast } from "react-toastify";
+import { Spinner } from "./ui/spinner";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -27,9 +29,28 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      toast.error("Please fill in all fields.");
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
       console.log("Form submitted:", formData);
+      toast.success("Your message has been sent successfully.");
       setSubmitStatus("success");
 
       setFormData({
@@ -40,6 +61,7 @@ export default function ContactForm() {
       });
     } catch (error) {
       console.error("Error submitting form:", error);
+      toast.error("There was an error sending your message. Please try again.");
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -51,6 +73,7 @@ export default function ContactForm() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center py-20 px-4 bg-gradient-to-b from-[#0a0f1a] to-[#0f172a] ">
+      <ToastContainer position="top-right" autoClose={5000} />
       <div className="absolute top-[-200px] left-[-150px] w-[600px] h-[600px] bg-[#00a7e0]/10 rounded-full opacity-30" />
       <div className="absolute bottom-[-150px] right-[-100px] w-[500px] h-[500px] bg-[#9333ea]/10 rounded-full opacity-30" />
 
@@ -154,13 +177,15 @@ export default function ContactForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full px-6 py-3 bg-[#00a7e0] text-white font-medium rounded-lg transition-colors hover:bg-[#0077cc] flex items-center justify-center ${
-                    isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                  }`}
+                  className={`w-full px-6 py-3 bg-[#00a7e0] text-white font-medium rounded-lg transition-colors hover:bg-[#0077cc] flex items-center justify-center ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                    }`}
                 >
                   <span className="flex items-center justify-center">
                     {isSubmitting ? (
-                      <span className="tracking-wider">SENDING...</span>
+                      <div>
+                        <span className="tracking-wider">SENDING...</span>
+                        <Spinner />
+                      </div>
                     ) : (
                       <>
                         <span className="tracking-wider">SEND MESSAGE</span>
