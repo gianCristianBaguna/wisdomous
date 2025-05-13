@@ -21,7 +21,7 @@ const Footer = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-sm text-center md:text-left">
-          <p className="font-semibold text-[#00a7e0]">© {new Date().getFullYear()} Wisodoums Tech</p>
+          <p className="font-semibold text-[#00a7e0]">© {new Date().getFullYear()} Wisodoums</p>
           <p className="text-white/60">Building ideas with precision and passion.</p>
         </div>
 
