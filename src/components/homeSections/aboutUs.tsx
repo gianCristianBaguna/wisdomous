@@ -2,8 +2,10 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { Quote, Users, Target, Lightbulb, Shield, Award, Zap, Code, TrendingUp, CheckCircle } from "lucide-react"
+import type { Variants } from "framer-motion";
 
-const fadeInUpVariant = {
+
+const fadeInUpVariant: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
@@ -66,6 +68,7 @@ const missionPoints = [
 export const AboutUs = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  
 
   return (
     <section ref={ref} className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
