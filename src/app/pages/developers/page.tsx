@@ -1,7 +1,7 @@
-{/*"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Code2,
   Terminal,
@@ -21,17 +21,23 @@ import {
   Database,
   Shield,
   Cpu,
-} from "lucide-react"
-import Link from "next/link"
-import { Navbar } from "../../components/navbar";
+} from "lucide-react";
+import Link from "next/link";
+import { Navbar } from "@/components/navbar";
 
 const developerTools = [
   {
     id: 1,
     title: "REST API",
-    description: "Comprehensive RESTful API with full CRUD operations and real-time capabilities.",
+    description:
+      "Comprehensive RESTful API with full CRUD operations and real-time capabilities.",
     icon: <Database className="w-6 h-6 text-blue-600" />,
-    features: ["Rate Limiting", "Authentication", "Webhooks", "Real-time Updates"],
+    features: [
+      "Rate Limiting",
+      "Authentication",
+      "Webhooks",
+      "Real-time Updates",
+    ],
     language: "cURL",
     code: `curl -X GET "https://api.example.com/v1/users" \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
@@ -44,9 +50,15 @@ const developerTools = [
   {
     id: 2,
     title: "JavaScript SDK",
-    description: "Modern JavaScript SDK with TypeScript support and comprehensive error handling.",
+    description:
+      "Modern JavaScript SDK with TypeScript support and comprehensive error handling.",
     icon: <Code2 className="w-6 h-6 text-yellow-600" />,
-    features: ["TypeScript Support", "Promise-based", "Error Handling", "Tree Shaking"],
+    features: [
+      "TypeScript Support",
+      "Promise-based",
+      "Error Handling",
+      "Tree Shaking",
+    ],
     language: "javascript",
     code: `import { ExampleSDK } from '@example/sdk';
 
@@ -64,7 +76,8 @@ const users = await client.users.list();`,
   {
     id: 3,
     title: "Python SDK",
-    description: "Pythonic SDK with async support and comprehensive data validation.",
+    description:
+      "Pythonic SDK with async support and comprehensive data validation.",
     icon: <Terminal className="w-6 h-6 text-green-600" />,
     features: ["Async Support", "Data Validation", "Auto-retry", "Logging"],
     language: "python",
@@ -85,9 +98,15 @@ users = await client.users.alist()`,
   {
     id: 4,
     title: "Webhooks",
-    description: "Real-time event notifications with secure payload verification.",
+    description:
+      "Real-time event notifications with secure payload verification.",
     icon: <Webhook className="w-6 h-6 text-purple-600" />,
-    features: ["Payload Verification", "Retry Logic", "Event Filtering", "Rate Limiting"],
+    features: [
+      "Payload Verification",
+      "Retry Logic",
+      "Event Filtering",
+      "Rate Limiting",
+    ],
     language: "json",
     code: `{
   "event": "user.created",
@@ -103,7 +122,7 @@ users = await client.users.alist()`,
     downloads: "10K+",
     stars: 400,
   },
-]
+];
 
 const quickStartSteps = [
   {
@@ -130,7 +149,7 @@ const quickStartSteps = [
     description: "Deploy to production and start building amazing features",
     icon: <Cpu className="w-5 h-5 text-purple-600" />,
   },
-]
+];
 
 const resources = [
   {
@@ -161,22 +180,22 @@ const resources = [
     link: "/status",
     type: "Status",
   },
-]
+];
 
 export default function DevelopersPage() {
-  const [selectedTool, setSelectedTool] = useState(0)
-  const [copiedCode, setCopiedCode] = useState<number | null>(null)
+  const [selectedTool, setSelectedTool] = useState(0);
+  const [copiedCode, setCopiedCode] = useState<number | null>(null);
 
   const copyCode = (code: string, index: number) => {
-    navigator.clipboard.writeText(code)
-    setCopiedCode(index)
-    setTimeout(() => setCopiedCode(null), 2000)
-  }
+    navigator.clipboard.writeText(code);
+    setCopiedCode(index);
+    setTimeout(() => setCopiedCode(null), 2000);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50">
-        <Navbar />
-      {/* Background Elements 
+      <Navbar />
+      Background Elements
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-400/10 rounded-full blur-3xl"
@@ -203,15 +222,19 @@ export default function DevelopersPage() {
           }}
         />
       </div>
-
-      {/* Hero Section 
       <div className="relative z-10 pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-8">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200 shadow-sm mb-6">
                 <Terminal className="w-4 h-4 text-indigo-600" />
-                <span className="text-sm font-medium text-gray-700">Developer Platform</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Developer Platform
+                </span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
@@ -223,8 +246,9 @@ export default function DevelopersPage() {
               </h1>
 
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-                Powerful, flexible APIs and SDKs that help you build faster. Get started in minutes with our
-                comprehensive developer tools and documentation.
+                Powerful, flexible APIs and SDKs that help you build faster. Get
+                started in minutes with our comprehensive developer tools and
+                documentation.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -245,8 +269,6 @@ export default function DevelopersPage() {
           </div>
         </div>
       </div>
-
-      {/* Developer Tools Section 
       <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -256,14 +278,17 @@ export default function DevelopersPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Developer Tools & SDKs</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Developer Tools & SDKs
+            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose from our collection of SDKs and tools to integrate with your favorite programming language.
+              Choose from our collection of SDKs and tools to integrate with
+              your favorite programming language.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Tools List 
+            Tools List
             <div className="space-y-4">
               {developerTools.map((tool, index) => (
                 <motion.div
@@ -283,7 +308,9 @@ export default function DevelopersPage() {
                     <div className="p-3 bg-gray-50 rounded-xl">{tool.icon}</div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-xl font-bold text-gray-900">{tool.title}</h3>
+                        <h3 className="text-xl font-bold text-gray-900">
+                          {tool.title}
+                        </h3>
                         <div className="flex items-center gap-4 text-sm text-gray-600">
                           <div className="flex items-center gap-1">
                             <Download className="w-4 h-4" />
@@ -298,7 +325,10 @@ export default function DevelopersPage() {
                       <p className="text-gray-600 mb-3">{tool.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {tool.features.map((feature, idx) => (
-                          <span key={idx} className="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full">
+                          <span
+                            key={idx}
+                            className="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full"
+                          >
                             {feature}
                           </span>
                         ))}
@@ -308,8 +338,6 @@ export default function DevelopersPage() {
                 </motion.div>
               ))}
             </div>
-
-            {/* Code Preview 
             <div className="lg:sticky lg:top-8">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -327,9 +355,16 @@ export default function DevelopersPage() {
                       <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-gray-400 text-sm">{developerTools[selectedTool].language}</span>
+                      <span className="text-gray-400 text-sm">
+                        {developerTools[selectedTool].language}
+                      </span>
                       <button
-                        onClick={() => copyCode(developerTools[selectedTool].code, selectedTool)}
+                        onClick={() =>
+                          copyCode(
+                            developerTools[selectedTool].code,
+                            selectedTool
+                          )
+                        }
                         className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
                       >
                         {copiedCode === selectedTool ? (
@@ -365,8 +400,6 @@ export default function DevelopersPage() {
           </div>
         </div>
       </div>
-
-      {/* Quick Start Section 
       <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 bg-white/50">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -376,9 +409,12 @@ export default function DevelopersPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Quick Start Guide</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Quick Start Guide
+            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Get up and running in just a few minutes with our step-by-step guide.
+              Get up and running in just a few minutes with our step-by-step
+              guide.
             </p>
           </motion.div>
 
@@ -401,7 +437,9 @@ export default function DevelopersPage() {
                       {step.step}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {step.title}
+                  </h3>
                   <p className="text-gray-600">{step.description}</p>
                 </div>
                 {index < quickStartSteps.length - 1 && (
@@ -412,8 +450,6 @@ export default function DevelopersPage() {
           </div>
         </div>
       </div>
-
-      {/* Resources Section 
       <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -423,9 +459,12 @@ export default function DevelopersPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Developer Resources</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Developer Resources
+            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need to build, test, and deploy your applications successfully.
+              Everything you need to build, test, and deploy your applications
+              successfully.
             </p>
           </motion.div>
 
@@ -463,8 +502,6 @@ export default function DevelopersPage() {
           </div>
         </div>
       </div>
-
-      {/* CTA Section 
       <div className="relative z-10 bg-gradient-to-r from-indigo-600 to-blue-600 py-16">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -474,9 +511,12 @@ export default function DevelopersPage() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Ready to Start Building?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">
+              Ready to Start Building?
+            </h2>
             <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
-              Join thousands of developers already building amazing applications with our platform.
+              Join thousands of developers already building amazing applications
+              with our platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/signup">
@@ -495,6 +535,5 @@ export default function DevelopersPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-*/}

@@ -6,7 +6,6 @@ import Image from "next/image";
 
 
 const navItems = [
-  { name: "PRODUCT", href: "/pages/product", hasDropdown: true },
   { name: "DEVELOPERS", href: "/pages/developers", hasDropdown: true },
   { name: "COMPANY", href: "/pages/company", hasDropdown: true },
 ]
