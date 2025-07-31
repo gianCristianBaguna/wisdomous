@@ -14,12 +14,7 @@
     "framer-motion": "^12.7.4",
     "lucide-react": "^0.494.0",
     "next": "15.3.1",
-<<<<<<< HEAD
     "react": "^19.1.1",
-=======
-    "nodemailer": "^7.0.2",
-    "react": "^19.0.0",
->>>>>>> f4940fcd8c161a0c794b1ae41a96a26c5a02056f
     "react-dom": "^19.0.0",
     "react-swipeable": "^7.0.2",
     "react-toastify": "^11.0.5",
