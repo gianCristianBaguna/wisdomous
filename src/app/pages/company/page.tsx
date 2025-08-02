@@ -1,11 +1,12 @@
 "use client";
 
+import React from "react";
+
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Users,
   Target,
-  Award,
   Globe,
   Heart,
   Lightbulb,
@@ -20,6 +21,8 @@ import {
   Building,
   Rocket,
   Star,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -54,28 +57,24 @@ const values = [
     description:
       "We embrace cutting-edge technologies and innovative solutions to solve complex problems.",
     icon: <Lightbulb className="w-8 h-8 text-yellow-600" />,
-    color: "yellow",
   },
   {
     title: "Client Success",
     description:
       "Our clients' success is our success. We're committed to delivering exceptional results.",
     icon: <Target className="w-8 h-8 text-blue-600" />,
-    color: "blue",
   },
   {
     title: "Quality & Security",
     description:
       "We maintain the highest standards of quality and security in everything we build.",
     icon: <Shield className="w-8 h-8 text-green-600" />,
-    color: "green",
   },
   {
     title: "Team Collaboration",
     description:
       "We believe in the power of teamwork and collaborative problem-solving.",
     icon: <Heart className="w-8 h-8 text-red-600" />,
-    color: "red",
   },
 ];
 
@@ -89,7 +88,6 @@ const offices = [
       "https://maps.google.com/maps?q=10.731843, 122.548914&hl=en&z=16&output=embed",
   },
 ];
-
 
 const team = [
   {
@@ -184,41 +182,59 @@ const team = [
   },
 ];
 
-const timeline = [
-  {
-    year: "2025",
-    title: "Company started",
-    description: "Established the initialization of the company",
-  },
-  {
-    year: "May",
-    title: "Projects",
-    description: "Received multiple projects",
-  },
-  {
-    year: "June",
-    title: "Projects",
-    description: "Received multiple projects",
-  },
-  {
-    year: "July",
-    title: "Corporation",
-    description: "Wisdomous into corporation world",
-  },
-];
-
 export default function CompanyPage() {
   const [activeOffice, setActiveOffice] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % team.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + team.length) % team.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000);
+  };
+
+  const currentMember = team[currentIndex];
+
+  // Enhanced avatar positioning with better distribution
+  const getAvatarPosition = (index: number, total: number) => {
+    const angle = (index * 360) / total - 90;
+    const radius = window.innerWidth < 768 ? 200 : 300;
+    const x = Math.cos((angle * Math.PI) / 180) * radius;
+    const y = Math.sin((angle * Math.PI) / 180) * radius;
+    return { x, y };
+  };
+
+  // Auto-play functionality
+  React.useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % team.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, team.length]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <Navbar />
+
       {/* Background Elements */}
-       <div className="relative z-0"><div
-        className="fixed top-80 left-50 w-full h-full -z-10 bg-no-repeat bg-cover bg-center -rotate-40"
-        style={{ backgroundImage: "url('/img/bgwaves.png')" }}
-      /></div>
-    
+      <div className="relative z-0">
+        <div
+          className="fixed top-80 left-50 w-full h-full -z-10 bg-no-repeat bg-cover bg-center -rotate-40"
+          style={{ backgroundImage: "url('/img/bgwaves.png')" }}
+        />
+      </div>
+
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl"
@@ -261,7 +277,6 @@ export default function CompanyPage() {
                   About Our Company
                 </span>
               </div>
-
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 Building the Future of
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -269,7 +284,6 @@ export default function CompanyPage() {
                   Technology
                 </span>
               </h1>
-
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
                 We're a passionate team of innovators, designers, and engineers
                 dedicated to creating software solutions that transform
@@ -333,7 +347,6 @@ export default function CompanyPage() {
                   and evolving solutions that adapt to changing business needs.
                 </p>
               </div>
-
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   Our Vision
@@ -346,7 +359,6 @@ export default function CompanyPage() {
                 </p>
               </div>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -356,7 +368,6 @@ export default function CompanyPage() {
             >
               <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
                 <div className="space-y-6">
-                  <div className="flex items-center gap-4"></div>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                       <TrendingUp className="w-6 h-6" />
@@ -402,7 +413,6 @@ export default function CompanyPage() {
               culture.
             </p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <motion.div
@@ -430,9 +440,10 @@ export default function CompanyPage() {
         </div>
       </div>
 
-      {/* Team Section */}
-      <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 bg-white/50">
+      {/* Enhanced Team Carousel Section */}
+      <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
         <div className="max-w-7xl mx-auto">
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -440,6 +451,12 @@ export default function CompanyPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <div className="inline-flex items-center gap-2 bg-blue-100 px-4 py-2 rounded-full mb-6">
+              <Users className="w-4 h-4 text-blue-600" />
+              <span className="text-sm font-medium text-blue-800">
+                Our Team
+              </span>
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Meet Our Leadership
             </h2>
@@ -448,67 +465,188 @@ export default function CompanyPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="relative h-64 overflow-hidden">
+          {/* Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Featured Card (Left Side) */}
+            <div className="flex justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, scale: 0.95, x: -30 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, x: -30 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="bg-white rounded-3xl shadow-xl overflow-hidden w-full max-w-md border border-gray-100"
+                >
+                  <div className="relative h-130 overflow-hidden">
                     <Image
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
+                      src={currentMember.image || "/placeholder.svg"}
+                      alt={currentMember.name}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <span className="text-sm font-semibold text-blue-600">
+                        {currentMember.role}
+                      </span>
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-blue-600 font-medium mb-3">
-                      {member.role}
-                    </p>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                      {member.bio}
-                    </p>
-                    <div className="flex gap-3">
-                      {member.social.linkedin && (
-                        <Link href={member.social.linkedin}>
-                          <button className="p-2 bg-gray-100 hover:bg-blue-100 rounded-lg transition-colors">
-                            <Linkedin className="w-4 h-4 text-gray-600 hover:text-blue-600" />
-                          </button>
+
+                  <div className="p-15">
+                    <div className="text-center mb-4">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                        {currentMember.name}
+                      </h3>
+                      <div className="w-12 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mb-4" />
+                      <p className="text-gray-600 leading-relaxed text-sm">
+                        {currentMember.bio}
+                      </p>
+                    </div>
+                    <div className="flex justify-center gap-3">
+                      {currentMember.social.linkedin && (
+                        <Link
+                          href={currentMember.social.linkedin}
+                          target="_blank"
+                          className="group"
+                        >
+                          <div className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 transition">
+                            <Linkedin className="w-4 h-4 text-gray-600 group-hover:text-blue-600" />
+                          </div>
                         </Link>
                       )}
-                      {member.social.twitter && (
-                        <Link href={member.social.twitter}>
-                          <button className="p-2 bg-gray-100 hover:bg-blue-100 rounded-lg transition-colors">
-                            <Twitter className="w-4 h-4 text-gray-600 hover:text-blue-600" />
-                          </button>
+                      {currentMember.social.twitter && (
+                        <Link
+                          href={currentMember.social.twitter}
+                          target="_blank"
+                          className="group"
+                        >
+                          <div className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 transition">
+                            <Twitter className="w-4 h-4 text-gray-600 group-hover:text-blue-500" />
+                          </div>
                         </Link>
                       )}
-                      {member.social.github && (
-                        <Link href={member.social.github}>
-                          <button className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-                            <Github className="w-4 h-4 text-gray-600" />
-                          </button>
+                      {currentMember.social.github && (
+                        <Link
+                          href={currentMember.social.github}
+                          target="_blank"
+                          className="group"
+                        >
+                          <div className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition">
+                            <Github className="w-4 h-4 text-gray-600 group-hover:text-gray-800" />
+                          </div>
                         </Link>
                       )}
                     </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Team List (Right Side) */}
+            <div className="flex flex-wrap justify-center gap-6">
+              {team.map((member, index) => (
+                <motion.div
+                  key={`${member.name}-${index}`}
+                  className="cursor-pointer group w-[280px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    filter: index === currentIndex ? "blur(0px)" : "blur(1px)",
+                    scale: index === currentIndex ? 1.05 : 1,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    delay: index * 0.05,
+                    filter: { duration: 0.2 },
+                  }}
+                  onClick={() => goToSlide(index)}
+                  whileHover={{
+                    filter: "blur(0px)",
+                    scale: 1.05,
+                    transition: { duration: 0.2 },
+                  }}
+                >
+                  <div
+                    className={`flex items-center gap-5 p-5 rounded-2xl transition-all duration-300 ${
+                      index === currentIndex
+                        ? "bg-blue-50 border-2 border-blue-300 shadow-lg"
+                        : "bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300"
+                    }`}
+                  >
+                    <div className="relative flex-shrink-0">
+                      <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-white shadow-sm">
+                        <Image
+                          src={member.image || "/placeholder.svg"}
+                          alt={member.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      {index === currentIndex && (
+                        <div className="absolute -top-1 -right-1 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
+                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <h4
+                        className={`font-semibold text-lg truncate ${
+                          index === currentIndex
+                            ? "text-blue-900"
+                            : "text-gray-900"
+                        }`}
+                      >
+                        {member.name}
+                      </h4>
+                      <p
+                        className={`text-sm truncate ${
+                          index === currentIndex
+                            ? "text-blue-600"
+                            : "text-gray-500"
+                        }`}
+                      >
+                        {member.role}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-10">
+            {team.map((_, index) => (
+              <button
+                key={index}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "bg-blue-600 w-6"
+                    : "bg-gray-300 w-2 hover:bg-gray-400"
+                }`}
+                onClick={() => goToSlide(index)}
+              />
             ))}
+          </div>
+
+          {/* Autoplay Toggle */}
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              className={`text-xs px-4 py-2 rounded-full transition-all duration-300 ${
+                isAutoPlaying
+                  ? "bg-blue-100 text-blue-600"
+                  : "bg-gray-100 text-gray-600"
+              }`}
+            >
+              {isAutoPlaying ? "Auto-playing" : "Paused"}
+            </button>
           </div>
         </div>
       </div>
-
-      
 
       {/* Offices Section */}
       <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 bg-white/50">
@@ -529,11 +667,10 @@ export default function CompanyPage() {
                     activeOffice === index ? "ring-2 ring-blue-600" : ""
                   }`}
                 >
-                  {/* Map iframe */}
-                  <div className="relative h-[480px] w-[full]">
+                  <div className="relative h-[480px] w-full">
                     <iframe
                       className="w-full h-full"
-                      src={office.mapUrl || "https://maps.google.com"}
+                      src={office.mapUrl}
                       loading="lazy"
                       allowFullScreen
                     ></iframe>
@@ -541,8 +678,6 @@ export default function CompanyPage() {
                       {office.employees} employees
                     </div>
                   </div>
-
-                  {/* Content section */}
                   <div className="p-6 flex flex-col gap-1">
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin className="w-5 h-5 text-blue-600" />
