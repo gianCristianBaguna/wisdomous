@@ -116,7 +116,7 @@ const team = [
     name: "Cheska",
     role: "Executive Secretary",
     bio: "Highly organized professional ensuring seamless communication, scheduling, and executive-level support.",
-    image: "/employees/Cheska.jpg",
+    image: "/employees/Cheska.JPG",
     social: {
       linkedin: "#",
       twitter: "#",
