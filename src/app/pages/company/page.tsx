@@ -86,7 +86,7 @@ const offices = [
     country: "Philippines",
     employees: "5+",
     mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3935.4089357268383!2d122.562058!3d10.724181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33af0ffbfcf369b3%3A0x93c6a529118a69a9!2sCentral%20Philippine%20University!5e0!3m2!1sen!2sph!4v1690797000000!5m2!1sen!2sph",
+      "https://maps.google.com/maps?q=10.731843, 122.548914&hl=en&z=16&output=embed",
   },
 ];
 
@@ -94,9 +94,9 @@ const offices = [
 const team = [
   {
     name: "Aljason",
-    role: "CEO & Founder",
-    bio: "Visionary leader with 15+ years in tech industry, passionate about building innovative solutions.",
-    image: "/placeholder.svg?height=300&width=300",
+    role: "CEO",
+    bio: "Visionary leader with over 15 years of experience in the tech industry, driving innovation and strategic growth.",
+    image: "/employees/Aljason.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -105,18 +105,28 @@ const team = [
   {
     name: "Paul Ian",
     role: "CTO",
-    bio: "Technical architect with expertise in scalable systems and emerging technologies.",
-    image: "/placeholder.svg?height=300&width=300",
+    bio: "Tech strategist and systems architect specializing in building scalable platforms and integrating cutting-edge technologies.",
+    image: "/employees/Paul-4.jpg",
     social: {
       linkedin: "#",
       github: "#",
     },
   },
   {
-    name: "Gian",
-    role: "Head of Design",
-    bio: "Creative director focused on user-centered design and exceptional user experiences.",
-    image: "/placeholder.svg?height=300&width=300",
+    name: "Cheska",
+    role: "Executive Secretary",
+    bio: "Highly organized professional ensuring seamless communication, scheduling, and executive-level support.",
+    image: "/employees/Cheska.jpg",
+    social: {
+      linkedin: "#",
+      twitter: "#",
+    },
+  },
+  {
+    name: "Faithnina",
+    role: "Marketing Executive Director",
+    bio: "Dynamic marketing leader with a passion for brand strategy, campaign execution, and driving business growth through innovative marketing initiatives.",
+    image: "/employees/Faith.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -124,8 +134,8 @@ const team = [
   },
   {
     name: "Alvin",
-    role: "VP of Engineering",
-    bio: "Engineering leader with a track record of building high-performance development teams.",
+    role: "Senior Developer",
+    bio: "Experienced full-stack developer focused on crafting robust codebases and mentoring development teams.",
     image: "/placeholder.svg?height=300&width=300",
     social: {
       linkedin: "#",
@@ -133,10 +143,40 @@ const team = [
     },
   },
   {
-    name: "Aaron",
-    role: "Backend",
-    bio: "Engineering leader with a track record of building high-performance development teams.",
-    image: "/placeholder.svg?height=300&width=300",
+    name: "Danica",
+    role: "HR Manager",
+    bio: "People-first HR leader dedicated to talent development, workplace culture, and organizational growth.",
+    image: "/employees/danica.png",
+    social: {
+      linkedin: "#",
+      github: "#",
+    },
+  },
+  {
+    name: "Rianne",
+    role: "Product Manager",
+    bio: "User-focused product strategist leading cross-functional teams to deliver impactful and market-ready solutions.",
+    image: "/employees/rainne.png",
+    social: {
+      linkedin: "#",
+      github: "#",
+    },
+  },
+  {
+    name: "Cloyd",
+    role: "Graphic Designer",
+    bio: "Creative visual storyteller with a flair for brand identity, UI/UX design, and engaging digital content.",
+    image: "/employees/Cloyd-3.jpg",
+    social: {
+      linkedin: "#",
+      github: "#",
+    },
+  },
+  {
+    name: "Allan",
+    role: "Product Owner",
+    bio: "Agile product owner aligning business goals with user needs to guide successful product development.",
+    image: "/employees/Allan.jpg",
     social: {
       linkedin: "#",
       github: "#",
@@ -174,6 +214,11 @@ export default function CompanyPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <Navbar />
       {/* Background Elements */}
+       <div className="relative z-0"><div
+        className="fixed top-80 left-50 w-full h-full -z-10 bg-no-repeat bg-cover bg-center -rotate-40"
+        style={{ backgroundImage: "url('/img/bgwaves.png')" }}
+      /></div>
+    
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl"
@@ -311,8 +356,7 @@ export default function CompanyPage() {
             >
               <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
                 <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                  </div>
+                  <div className="flex items-center gap-4"></div>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                       <TrendingUp className="w-6 h-6" />
@@ -464,54 +508,7 @@ export default function CompanyPage() {
         </div>
       </div>
 
-      {/* Timeline Section */}
-      <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Our Journey
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Key milestones that have shaped our company's growth and
-              evolution.
-            </p>
-          </motion.div>
-
-          <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-200"></div>
-            <div className="space-y-12">
-              {timeline.map((item, index) => (
-                <motion.div
-                  key={item.year}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative flex items-start gap-8"
-                >
-                  <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 relative z-10">
-                    {item.year}
-                  </div>
-                  <div className="bg-white rounded-2xl p-6 shadow-lg flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Offices Section */}
       <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 bg-white/50">
@@ -524,27 +521,29 @@ export default function CompanyPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group cursor-pointer w-full sm:w-[500px] md:w-[500px] lg:w-[520px]"
+                className="group cursor-pointer w-full sm:w-[800px] md:w-[800px] lg:w-[800px]"
                 onClick={() => setActiveOffice(index)}
               >
                 <div
-                  className={`bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 ${
+                  className={`flex flex-col justify-between min-h-[300px] bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 ${
                     activeOffice === index ? "ring-2 ring-blue-600" : ""
                   }`}
                 >
-                  <div className="relative h-[280px] w-full">
+                  {/* Map iframe */}
+                  <div className="relative h-[480px] w-[full]">
                     <iframe
                       className="w-full h-full"
                       src={office.mapUrl || "https://maps.google.com"}
                       loading="lazy"
                       allowFullScreen
                     ></iframe>
-
                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium text-gray-700 shadow">
                       {office.employees} employees
                     </div>
                   </div>
-                  <div className="p-6">
+
+                  {/* Content section */}
+                  <div className="p-6 flex flex-col gap-1">
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin className="w-5 h-5 text-blue-600" />
                       <h3 className="text-2xl font-bold text-gray-900">

@@ -73,10 +73,17 @@ export const AboutUs = () => {
   return (
     <section ref={ref} className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
 
+       <div className="relative z-0"><div
+        className="fixed top-80 left-50 w-full h-full -z-10 bg-no-repeat bg-cover bg-center -rotate-40"
+        style={{ backgroundImage: "url('/img/bgwaves.png')" }}
+      /></div>
+    
+
       {/* Background Elements */}
       <div className="absolute inset-0 z-0 bg-grid-pattern bg-grid-xl pointer-events-none"></div>
       <div className="absolute top-0 left-0 w-72 h-72 bg-[#00a7e0]/5 rounded-full blur-3xl -translate-x-36 -translate-y-36"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-48 translate-y-48"></div>
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
