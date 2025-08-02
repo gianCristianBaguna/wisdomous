@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Users,
@@ -77,6 +77,7 @@ const values = [
     icon: <Heart className="w-8 h-8 text-red-600" />,
   },
 ];
+
 
 const offices = [
   {
@@ -181,11 +182,36 @@ const team = [
     },
   },
 ];
+const quickStartSteps = [
+  {
+    id: "faprna",
+    title: "Faprna",
+    image: "/placeholder.svg?height=200&width=300",
+  },
+  {
+    id: "cpu",
+    title: "CPU",
+    image: "/placeholder.svg?height=200&width=300",
+  },
+  {
+    id: "mtsi",
+    title: "MTSI",
+    image: "/placeholder.svg?height=200&width=300",
+  },
+  {
+    id: "apollo",
+    title: "Apollo",
+    image: "/placeholder.svg?height=200&width=300",
+  },
+];
 
 export default function CompanyPage() {
   const [activeOffice, setActiveOffice] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const carouselRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % team.length);
@@ -691,6 +717,118 @@ export default function CompanyPage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </div>
+      {/* Clients Section */}
+      <div className="relative z-10 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white/50 w-full">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Clients and Partnerships
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
+              Our development process ensures quality, efficiency, and
+              innovation in every project we undertake.
+            </p>
+          </motion.div>
+
+          {/* Desktop Grid - Hidden on mobile */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {quickStartSteps.map((step, index) => (
+              <motion.div
+                key={step.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-4 hover:shadow-xl transition-shadow h-full">
+                  <div className="w-full h-32 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      className="w-full h-full object-cover rounded-xl"
+                    />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
+                    {step.title}
+                  </h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile Carousel - Visible only on mobile */}
+          <div className="sm:hidden mb-8">
+            <div className="relative">
+              {/* Carousel Container */}
+              <div ref={carouselRef} className="overflow-hidden rounded-2xl">
+                <div
+                  className="flex transition-transform duration-500 ease-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {Array.from({
+                    length: Math.ceil(quickStartSteps.length / 2),
+                  }).map((_, slideIndex) => (
+                    <div key={slideIndex} className="w-full flex-shrink-0 px-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        {quickStartSteps
+                          .slice(slideIndex * 2, slideIndex * 2 + 2)
+                          .map((step) => (
+                            <motion.div
+                              key={step.id}
+                              initial={{ opacity: 0, y: 30 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.8 }}
+                              viewport={{ once: true }}
+                              className="text-center"
+                            >
+                              <div className="bg-white rounded-xl shadow-lg p-3 mb-3 hover:shadow-xl transition-shadow h-full">
+                                <div className="w-full h-24 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 overflow-hidden">
+                                  <img
+                                    src={step.image}
+                                    alt={step.title}
+                                    className="w-full h-full object-cover rounded-xl"
+                                  />
+                                </div>
+                                <h3 className="text-sm font-bold text-gray-900 mb-2">
+                                  {step.title}
+                                </h3>
+                              </div>
+                            </motion.div>
+                          ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {Array.from({
+                length: Math.ceil(quickStartSteps.length / 2),
+              }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentSlide
+                      ? "bg-blue-600 w-6"
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

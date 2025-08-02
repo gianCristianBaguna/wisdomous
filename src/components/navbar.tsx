@@ -39,15 +39,12 @@ export const Navbar = () => {
                   className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors duration-200"
                 >
                   <span>{item.name}</span>
-                  {item.hasDropdown && (
-                    <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
-                  )}
                 </Link>
               </div>
             ))}
             <Link
               href="/pages/contact"
-              className="bg-[#1029A2] hover:bg-[#00a7e0] text-white px-6 py-2 rounded-lg font-medium text-sm transition-colors duration-200"
+              className="bg-[#00a7e0] hover:bg-[#0a0f1a] text-white px-6 py-2 rounded-lg font-medium text-sm transition-colors duration-200"
             >
               Contact Us
             </Link>
@@ -74,12 +71,11 @@ export const Navbar = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span>{item.name}</span>
-                  {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
                 </Link>
               ))}
               <Link
                 href="@/app/pages/contact/page"
-                className="bg-[#00d084] hover:bg-[#00b872] text-white px-6 py-3 rounded-lg font-medium text-sm text-center transition-colors duration-200"
+                className="bg-[#00a7e0] hover:bg-[#00b872] text-white px-6 py-3 rounded-lg font-medium text-sm text-center transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact Us

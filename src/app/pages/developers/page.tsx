@@ -1,15 +1,57 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, ReactNode } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Facebook } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Facebook,
+  Code,
+  MapPin,
+  Clock,
+  Server,
+  Database,
+  Cloud,
+  Terminal,
+  Layout,
+  Paintbrush,
+  GitBranch,
+  Smartphone,
+  Palette,
+  Layers,
+  Settings,
+  Globe,
+  BadgeCheck,
+  Rocket,
+  Briefcase,
+  Laptop,
+} from "lucide-react";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import Image from "next/image";
+import React from "react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiNodedotjs,
+  SiMongodb,
+  SiPostgresql,
+  SiDocker,
+  SiFigma,
+  SiFlutter,
+  SiTailwindcss,
+  SiExpress,
+  SiVercel,
+  SiKubernetes,
+  SiSwift,
+  SiKotlin,
+} from "react-icons/si";
 
 const developers = [
   {
     id: 1,
-    name: "Alvin Glenn Besa",
+    name: "Alvin!",
+    intro: "Hi, Im",
     role: "Senior Full-Stack Developer",
     location: "Iloilo City, Philippines",
     experience: "8+ years",
@@ -22,11 +64,19 @@ const developers = [
   },
   {
     id: 2,
-    name: "Aaron Ciervo",
+    name: "Aaron!",
+    intro: "Hi, Im",
     role: "Fullstack Developer",
     location: "Iloilo City, Philippines",
     experience: "5 years",
-    specialties: ["React", "Vue.js", "UI/UX", "Performance"],
+    specialties: [
+      "React",
+      "ExpressJS",
+      "NextJS",
+      "Mongo DB",
+      "PostgreSQL",
+      "Vercel",
+    ],
     bio: "Specializes in creating beautiful, performant user interfaces. Expert in modern frontend frameworks and design systems.",
     imageUrl: "/developers/aaron.png",
     github: "https://github.com/sarahrodriguez",
@@ -35,7 +85,8 @@ const developers = [
   },
   {
     id: 3,
-    name: " Aljason Javier",
+    name: "Aljason!",
+    intro: "Hi, Im",
     role: "Fullstack Developer",
     location: "Iloilo City, Philippines",
     experience: "5 years",
@@ -48,7 +99,8 @@ const developers = [
   },
   {
     id: 4,
-    name: "Gian Cristian Baguna",
+    name: "Gian!",
+    intro: "Hi, Im",
     role: "Frontend Developer",
     location: "Iloilo City, Philippines",
     experience: "5 years",
@@ -61,7 +113,8 @@ const developers = [
   },
   {
     id: 5,
-    name: "Jon Wayne Cabusbusan",
+    name: "Wayne!",
+    intro: "Hi, Im",
     role: "Frontend Developer",
     location: "Iloilo City, Philippines",
     experience: "5 years",
@@ -74,7 +127,8 @@ const developers = [
   },
   {
     id: 6,
-    name: "Raine Christine Perez",
+    name: "Raine!",
+    intro: "Hi, Im",
     role: "Frontend Developer",
     location: "Iloilo City, Philippines",
     experience: "5 years",
@@ -87,7 +141,8 @@ const developers = [
   },
   {
     id: 7,
-    name: "Paul Ian Capanas",
+    name: "Paul!",
+    intro: "Hi, Im",
     role: "Frontend Developer",
     location: "Victorias City, Negros Occidental, Philippines",
     experience: "5 years",
@@ -100,76 +155,38 @@ const developers = [
   },
 ];
 
-const quickStartSteps = [
-  {
-    id: "faprna",
-    title: "Faprna",
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: "cpu",
-    title: "CPU",
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: "mtsi",
-    title: "MTSI",
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: "apollo",
-    title: "Apollo",
-    image: "/placeholder.svg?height=200&width=300",
-  },
-];
-
 export default function DevelopersPage() {
   const [selectedDeveloper, setSelectedDeveloper] = useState<number | null>(
     null
   );
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const dev = developers[selectedDeveloper ?? 0];
 
-  // Auto-play functionality for mobile carousel
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    const startCarousel = () => {
-      interval = setInterval(() => {
-        setCurrentSlide(
-          (prev) => (prev + 1) % Math.ceil(quickStartSteps.length / 2)
-        );
-      }, 5000); // Auto-advance every 5 seconds
-    };
-
-    const handleResize = () => {
-      clearInterval(interval);
-      const isMobile = window.innerWidth < 640;
-      if (isMobile && quickStartSteps.length > 0) {
-        startCarousel();
-      }
-    };
-
-    // Initial check
-    handleResize();
-
-    // Listen for resize events
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [quickStartSteps.length]);
+  const techIcons: Record<string, ReactNode> = {
+    React: <SiReact className="text-white w-4 h-4" />,
+    "Next.js": <SiNextdotjs className="text-white w-4 h-4" />,
+    TypeScript: <SiTypescript className="text-white w-4 h-4" />,
+    "Node.js": <SiNodedotjs className="text-white w-4 h-4" />,
+    MongoDB: <SiMongodb className="text-white w-4 h-4" />,
+    PostgreSQL: <SiPostgresql className="text-white w-4 h-4" />,
+    Docker: <SiDocker className="text-white w-4 h-4" />,
+    Figma: <SiFigma className="text-white w-4 h-4" />,
+    Flutter: <SiFlutter className="text-white w-4 h-4" />,
+    "Tailwind CSS": <SiTailwindcss className="text-white w-4 h-4" />,
+    ExpressJS: <SiExpress className="text-white w-4 h-4" />,
+    Vercel: <SiVercel className="text-white w-4 h-4" />,
+    Kubernetes: <SiKubernetes className="text-white w-4 h-4" />,
+    Swift: <SiSwift className="text-white w-4 h-4" />,
+    Kotlin: <SiKotlin className="text-white w-4 h-4" />,
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50 overflow-x-hidden">
+    <div className="w-full min-h-screen overflow-x-hidden bg-white">
       <Navbar />
 
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-400/10 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-white rounded-full blur-3xl"
           animate={{
             y: [0, -30, 0],
             x: [0, 20, 0],
@@ -181,7 +198,7 @@ export default function DevelopersPage() {
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-white rounded-full blur-3xl"
           animate={{
             y: [0, 30, 0],
             x: [0, -20, 0],
@@ -194,271 +211,270 @@ export default function DevelopersPage() {
         />
       </div>
 
-      {/* Hero Section */}
-      <div className="relative z-10 pt-20 pb-8 sm:pb-16 px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-7xl mx-auto">
+      {/* Hero Section with Background */}
+      <div className="relative z-10 pt-20 pb-8 sm:pb-16 px-4 sm:px-6 lg:px-8 w-full mt-10 overflow-hidden bg-white">
+        {/* 💠 Background Glow & Blob */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-white  opacity-80" />
+
+          {/* Abstract Blob */}
+          <svg
+            className="absolute top-[-100px] left-1/2 transform -translate-x-1/2 w-[800px] h-[800px] opacity-10 blur-3xl"
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="#00a7e0"
+              d="M49.8,-64.5C63.4,-55.2,72.8,-37.8,75.1,-20.5C77.4,-3.1,72.7,14.2,65.6,30.3C58.5,46.4,49,61.3,35.6,67.9C22.2,74.5,4.9,72.8,-11.6,70C-28.2,67.1,-44,63.2,-55.6,52.6C-67.1,42.1,-74.4,24.9,-73.8,9.4C-73.2,-6.1,-64.7,-20,-54.2,-30.9C-43.7,-41.9,-31.3,-49.9,-18.1,-58.7C-4.9,-67.6,9.1,-77.2,23.5,-77.7C37.8,-78.1,51.5,-69.4,49.8,-64.5Z"
+              transform="translate(100 100)"
+            />
+          </svg>
+        </div>
+
+        {/* 🧠 Hero Content */}
+        <div className="max-w-7xl mx-auto mb-10">
           <div className="text-center space-y-6 sm:space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
-                Meet our Developers
+              {/* Icon */}
+              <div className="flex justify-center">
+                <svg
+                  className="w-16 h-16 text-[#00a7e0] mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 4h16v16H4V4zm5 8l-2 2m0-4l2 2m8-2l-2-2m0 4l2-2"
+                  />
+                </svg>
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-4 sm:mb-6">
+                Meet our <span className="text-[#00a7e0]">Developers</span>
               </h1>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0">
+
+              <p className="text-lg sm:text-xl text-black max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0">
                 Behind the success of Wisdomous, there's a team of dedicated
                 Software Developers who are passionate about building innovative
-                solutions. Our developers are experts in their respective roles,
-                constantly pushing boundaries and creating impactful solutions.
+                solutions.
               </p>
+              <div className="relative z-0">
+                {/* Background Images */}
+                <div className="absolute -bottom-20 left-0 w-[240px] h-[660px] pointer-events-none -rotate-40">
+                  <Image
+                    src="/img/stack3.png"
+                    alt="Stack 3"
+                    width={240}
+                    height={660}
+                    loading="lazy"
+                    className="object-contain transition duration-300"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
+                <div className="absolute -bottom-10 right-0 w-[240px] h-[660px] pointer-events-none rotate-20">
+                  <Image
+                    src="/img/stack2.png"
+                    alt="Stack 2"
+                    width={240}
+                    height={660}
+                    loading="lazy"
+                    className="object-contain transition duration-300"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
+
+                {/* Foreground Section */}
+                <section className="relative z-10 bg-[#0a0f1a] rounded-2xl py-16 px-6">
+                  <div className="max-w-6xl mx-auto text-center">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8 flex justify-center items-center gap-2">
+                      <span className="inline-flex items-center text-[#00a7e0]">
+                        <Laptop className="w-6 h-6 mr-2" />
+                        Technology Stack
+                      </span>
+                    </h2>
+
+                    <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                      {[
+                        "React",
+                        "Next.js",
+                        "TypeScript",
+                        "Node.js",
+                        "MongoDB",
+                        "PostgreSQL",
+                        "Docker",
+                        "AWS",
+                        "Figma",
+                        "Flutter",
+                        "Tailwind CSS",
+                        "CI/CD",
+                        "ExpressJS",
+                        "Vercel",
+                        "Kubernetes",
+                        "Swift",
+                        "Kotlin",
+                      ].map((tech, i) => (
+                        <span
+                          key={i}
+                          className="hover:scale-110 transition transform duration-300 bg-gradient-to-br from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md flex items-center gap-2"
+                        >
+                          {techIcons[tech]}
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              </div>
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* Developers Section */}
-      <div className="relative z-10 w-full">
-        {developers.map((developer, index) => (
-          <section
-            key={developer.id}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start py-12 px-4 sm:px-6 lg:px-8 bg-white w-full max-w-7xl mx-auto"
+      {/* Developers Carousel Section */}
+      <div className="relative z-10 w-full  px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="flex justify-between items-center max-w-6xl mx-auto mb-6 pt-10">
+          <h2 className="text-3xl font-bold text-black">Meet the Team</h2>
+          <div className="flex gap-4">
+            <button
+              onClick={() =>
+                setSelectedDeveloper((prev) =>
+                  prev === 0 ? developers.length - 1 : prev! - 1
+                )
+              }
+              className="text-black px-3 py-2 border border-white rounded hover:bg-[#00a7e0] hover:text-[#0a0f1a] transition"
+            >
+              Prev
+            </button>
+            <button
+              onClick={() =>
+                setSelectedDeveloper((prev) =>
+                  prev === developers.length - 1 ? 0 : prev! + 1
+                )
+              }
+              className="text-black px-3 py-2 border border-white rounded hover:bg-[#00a7e0] hover:text-[#0a0f1a] transition"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+
+        <div className="overflow-hidden max-w-7xl mx-auto">
+          <motion.div
+            key={developers[selectedDeveloper ?? 0].id}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5 }}
           >
-            {/* Left Side - Name, Role, and Bio */}
-            <div className="lg:col-span-4 space-y-4 md:space-y-6 text-center lg:text-left order-1">
-              <div className="space-y-2">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-gray-900">
-                  {developer.name}
-                </h1>
-                <p className="text-lg md:text-xl font-semibold text-gray-700">
-                  {developer.role}
+            <section className="relative isolate grid grid-cols-1 lg:grid-cols-12 gap-10 items-start bg-[#0a0f1a] min-h-[80vh] w-full overflow-hidden rounded-2xl border border-white/10 px-8 py-12 shadow-lg">
+              {/* Left Side */}
+              <div className="lg:col-span-4 space-y-5 text-center lg:text-left">
+                <div className="space-y-2">
+                  <h1 className="text-8xl font-extrabold text-white leading-tight">
+                    Hi, I'm <span className="text-[#00a7e0]">{dev.name}</span>
+                  </h1>
+                  <p className="text-xl font-medium text-[#00e0d4] flex items-center justify-center lg:justify-start gap-2">
+                    <Briefcase className="w-5 h-5 text-[#00e0d4]" />
+                    {dev.role}
+                  </p>
+                </div>
+                <p className="text-gray-300 text-2xl leading-relaxed border-l-4 border-[#00a7e0] pl-4 italic">
+                  “{dev.bio}”
                 </p>
               </div>
-              <p className="text-sm md:text-base leading-relaxed text-gray-700">
-                {developer.bio}
-              </p>
-            </div>
 
-            {/* Center - Image */}
-            <div className="lg:col-span-4 relative flex justify-center items-center p-4 md:p-0 order-2">
-              <div className="relative z-10 w-[300px] h-[300px] md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px]">
-                <Image
-                  src={developer.imageUrl || "/placeholder.svg"}
-                  alt={developer.name}
-                  width={600}
-                  height={600}
-                  className="object-cover w-full h-full rounded-lg"
-                  priority={index < 2}
-                />
-              </div>
-            </div>
+              {/* Image Center */}
+              <div className="lg:col-span-4 flex flex-col items-center justify-center">
+                <div className="relative w-[280px] h-[280px] md:w-[360px] md:h-[400px] rounded-2xl overflow-hidden border-4 border-[#00a7e0]/20 shadow-2xl hover:scale-105 transition duration-300">
+                  {/* 👇 Background Text Layer */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-white/5 leading-tight text-center z-0 select-none pointer-events-none">
+                      <span className="text-[#00a7e0]/10">{dev.role}</span>
+                    </h1>
+                  </div>
 
-            {/* Right Side - Details and Social Links */}
-            <div className="lg:col-span-4 space-y-4 md:space-y-6 text-center lg:text-left order-3 pt-32 mt-32">
-              <div className="space-y-3 pt-2">
-                <div>
-                  <h3 className="text-lg md:text-xl font-semibold text-gray-800">
-                    Details
-                  </h3>
-                  <ul className="list-disc list-inside space-y-1 mt-2 text-gray-700 text-sm md:text-base">
-                    <li>
-                      <span className="font-medium">Address:</span>{" "}
-                      {developer.location}
-                    </li>
-                    <li>
-                      <span className="font-medium">Years of Experience:</span>{" "}
-                      {developer.experience}
-                    </li>
-                  </ul>
+                  {/* 👇 Foreground Image */}
+                  <Image
+                    src={dev.imageUrl}
+                    alt={dev.name}
+                    width={400}
+                    height={400}
+                    className="object-cover w-full h-full relative z-10"
+                  />
                 </div>
-                <div>
-                  <h3 className="text-lg md:text-xl font-semibold text-gray-800">
-                    Specialties
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mt-2 justify-center lg:justify-start">
-                    {developer.specialties.map((specialty, i) => (
+
+                <div className="mt-6 bg-[#101729] rounded-xl border border-white/10 px-6 py-6 shadow-md w-full max-w-xl text-center">
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <Code className="w-5 h-5 text-[#00a7e0]" />
+                    <h3 className="text-lg font-semibold text-white tracking-wide">
+                      Tech Stack
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap justify-center gap-3">
+                    {dev.specialties.map((skill, i) => (
                       <span
                         key={i}
-                        className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium"
+                        className="flex items-center gap-1 bg-gradient-to-br from-[#00a7e0] to-[#0070f3] text-white px-4 py-2 rounded-full text-sm font-medium shadow hover:scale-105 transition"
                       >
-                        {specialty}
+                        {techIcons[skill] ?? <Code className="w-4 h-4 mr-1" />}
+                        {skill}
                       </span>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="flex justify-center lg:justify-start gap-4 pt-4">
-                <Link
-                  href={developer.github}
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
-                  aria-label="GitHub"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="w-6 h-6" />
-                </Link>
-                <Link
-                  href={developer.linkedin}
-                  className="text-gray-600 hover:text-blue-600 transition-colors"
-                  aria-label="LinkedIn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin className="w-6 h-6" />
-                </Link>
-                <Link
-                  href={developer.facebook}
-                  className="text-gray-600 hover:text-blue-800 transition-colors"
-                  aria-label="Facebook"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Facebook className="w-6 h-6" />
-                </Link>
-              </div>
-            </div>
-          </section>
-        ))}
-      </div>
-
-      {/* Clients Section */}
-      <div className="relative z-10 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white/50 w-full">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Clients and Partnerships
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
-              Our development process ensures quality, efficiency, and
-              innovation in every project we undertake.
-            </p>
-          </motion.div>
-
-          {/* Desktop Grid - Hidden on mobile */}
-          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {quickStartSteps.map((step, index) => (
-              <motion.div
-                key={step.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-4 hover:shadow-xl transition-shadow h-full">
-                  <div className="w-full h-32 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                    <img
-                      src={step.image}
-                      alt={step.title}
-                      className="w-full h-full object-cover rounded-xl"
-                    />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
-                    {step.title}
+              {/* Right Side */}
+              <div className="lg:col-span-4 space-y-6 text-center lg:text-left">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-white tracking-wide flex items-center gap-2">
+                    <span className="text-[#00a7e0]">
+                      <MapPin className="w-5 h-5" />
+                    </span>
+                    Quick Details
                   </h3>
-                </div>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* Mobile Carousel - Visible only on mobile */}
-          <div className="sm:hidden mb-8">
-            <div className="relative">
-              {/* Carousel Container */}
-              <div ref={carouselRef} className="overflow-hidden rounded-2xl">
-                <div
-                  className="flex transition-transform duration-500 ease-out"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
-                  {Array.from({
-                    length: Math.ceil(quickStartSteps.length / 2),
-                  }).map((_, slideIndex) => (
-                    <div key={slideIndex} className="w-full flex-shrink-0 px-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        {quickStartSteps
-                          .slice(slideIndex * 2, slideIndex * 2 + 2)
-                          .map((step) => (
-                            <motion.div
-                              key={step.id}
-                              initial={{ opacity: 0, y: 30 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.8 }}
-                              viewport={{ once: true }}
-                              className="text-center"
-                            >
-                              <div className="bg-white rounded-xl shadow-lg p-3 mb-3 hover:shadow-xl transition-shadow h-full">
-                                <div className="w-full h-24 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 overflow-hidden">
-                                  <img
-                                    src={step.image}
-                                    alt={step.title}
-                                    className="w-full h-full object-cover rounded-xl"
-                                  />
-                                </div>
-                                <h3 className="text-sm font-bold text-gray-900 mb-2">
-                                  {step.title}
-                                </h3>
-                              </div>
-                            </motion.div>
-                          ))}
-                      </div>
-                    </div>
-                  ))}
+                  <ul className="text-[#00a7e0] text-sm space-y-2">
+                    <li className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      <span className="font-medium text-white">
+                        Location:
+                      </span>{" "}
+                      {dev.location}
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      <span className="font-medium text-white">
+                        Experience:
+                      </span>{" "}
+                      {dev.experience}
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Social Links */}
+                <div className="flex justify-center lg:justify-start gap-4 mt-60 ml-10">
+                  <Link href={dev.github} target="_blank">
+                    <Github className="text-white hover:text-[#00a7e0] w-20 h-20 transition" />
+                  </Link>
+                  <Link href={dev.linkedin} target="_blank">
+                    <Linkedin className="text-white hover:text-[#0077b5] w-20 h-20 transition" />
+                  </Link>
+                  <Link href={dev.facebook} target="_blank">
+                    <Facebook className="text-white hover:text-[#4267B2] w-20 h-20 transition" />
+                  </Link>
                 </div>
               </div>
-            </div>
-
-            {/* Dots Indicator */}
-            <div className="flex justify-center mt-6 space-x-2">
-              {Array.from({
-                length: Math.ceil(quickStartSteps.length / 2),
-              }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? "bg-blue-600 w-6"
-                      : "bg-gray-300 hover:bg-gray-400"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="relative z-10 bg-gradient-to-r from-indigo-600 to-blue-600 py-12 sm:py-16 w-full">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-4 sm:space-y-6"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              Interested in Our Services?
-            </h2>
-            <p className="text-lg sm:text-xl text-indigo-100 max-w-2xl mx-auto">
-              Let's discuss how our development team can help bring your ideas
-              to life.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact" className="w-full sm:w-auto">
-                <button className="w-full border-2 border-white text-white hover:bg-white hover:text-indigo-600 px-6 sm:px-8 py-2 sm:py-3 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300">
-                  Contact Us
-                </button>
-              </Link>
-            </div>
+            </section>
           </motion.div>
         </div>
       </div>
