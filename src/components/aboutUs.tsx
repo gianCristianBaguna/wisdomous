@@ -8,18 +8,6 @@ export const AboutUs = () => {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 })
 
-  const fadeInUpVariant = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    }),
-  }
 
   return (
     <section ref={sectionRef} className="relative py-20 overflow-hidden bg-[#0a0f1a] text-white">
@@ -95,7 +83,6 @@ export const AboutUs = () => {
               key={i}
               custom={i}
               initial="hidden"
-              variants={fadeInUpVariant}
               animate={isInView ? "visible" : "hidden"}
               className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors duration-300"
             >
@@ -134,7 +121,6 @@ export const AboutUs = () => {
                   key={i}
                   custom={i}
                   initial="hidden"
-                  variants={fadeInUpVariant}
                   animate={isInView ? "visible" : "hidden"}
                   className="flex items-start"
                 >
