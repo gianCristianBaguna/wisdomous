@@ -134,7 +134,7 @@ const team = [
     name: "Alvin",
     role: "Senior Developer",
     bio: "Experienced full-stack developer focused on crafting robust codebases and mentoring development teams.",
-    image: "/employees/Gian.jpg",
+    image: "/employees/Alvin.png",
     social: {
       linkedin: "#",
       github: "#",
