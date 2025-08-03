@@ -54,9 +54,11 @@ const developers = [
     intro: "Hi, Im",
     role: "Senior Full-Stack Developer",
     location: "Iloilo City, Philippines",
-    experience: "8+ years",
-    specialties: ["React", "Node.js", "TypeScript", "AWS"],
-    bio: "Passionate about building scalable web applications and mentoring junior developers. Led the development of our core platform architecture.",
+    experience:
+      "Systems Engineering, Relational & Non-Relational Databases, Software & Network Security, DevOps, Software Architecture/Design",
+    frameworks: ["Next.js", "Express.js", "NestJS", "React Native"],
+    specialties: ["React", "Next", ".NET core", ".NET Framework", "Falcon"],
+    bio: "The Backbone of our Development Team, More than 5 years of experience in the industry, Very passionate in coding and mentoring Junior Developers.",
     imageUrl: "/developers/alvin.png",
     github: "https://github.com/alexchen",
     linkedin: "https://linkedin.com/in/alvinbesa",
@@ -68,7 +70,9 @@ const developers = [
     intro: "Hi, Im",
     role: "Fullstack Developer",
     location: "Iloilo City, Philippines",
-    experience: "5 years",
+    experience:
+      "Web development, Relational & Non-Relational Databases: PostgreSQL, MongoDB",
+    frameworks: ["React, Express.js, Next.js"],
     specialties: [
       "React",
       "ExpressJS",
@@ -77,35 +81,38 @@ const developers = [
       "PostgreSQL",
       "Vercel",
     ],
-    bio: "Specializes in creating beautiful, performant user interfaces. Expert in modern frontend frameworks and design systems.",
+    bio: "The Enthusiast, always eager and venture new technologies, a sharp advocate within the Development Team.",
     imageUrl: "/developers/aaron.png",
     github: "https://github.com/sarahrodriguez",
     linkedin: "https://linkedin.com/in/aaronciervo",
     facebook: "https://facebook.com/aaronciervo",
   },
-  {
-    id: 3,
-    name: "Aljason!",
-    intro: "Hi, Im",
-    role: "Fullstack Developer",
-    location: "Iloilo City, Philippines",
-    experience: "5 years",
-    specialties: ["Python", "Django", "PostgreSQL", "Docker"],
-    bio: "Backend specialist focused on building robust APIs and database architectures. Passionate about clean code and system optimization.",
-    imageUrl: "/developers/aljason.png",
-    github: "https://github.com/marcusjohnson",
-    linkedin: "https://linkedin.com/in/aljasonjavier",
-    facebook: "https://facebook.com/aljasonjavier",
-  },
+  // {
+  //   id: 3,
+  //   name: "Aljason!",
+  //   intro: "Hi, Im",
+  //   role: "Fullstack Developer",
+  //   location: "Iloilo City, Philippines",
+  //   experience: "5 years",
+  //   frameworks: ["Django", "FastAPI", "Flask", "Django REST"],
+  //   specialties: ["Python", "Django", "PostgreSQL", "Docker"],
+  //   bio: "Backend specialist focused on building robust APIs and database architectures. Passionate about clean code and system optimization.",
+  //   imageUrl: "/developers/aljason.png",
+  //   github: "https://github.com/marcusjohnson",
+  //   linkedin: "https://linkedin.com/in/aljasonjavier",
+  //   facebook: "https://facebook.com/aljasonjavier",
+  // },
   {
     id: 4,
     name: "Gian!",
     intro: "Hi, Im",
     role: "Frontend Developer",
     location: "Iloilo City, Philippines",
-    experience: "5 years",
+    experience:
+      "Has multiple involvements in local projects, and is notorious on his caliber in creating excellent UI/UX design.",
+    frameworks: ["React Native", "Flutter", "Ionic", "Xamarin"],
     specialties: ["React Native", "Swift", "Kotlin", "Flutter"],
-    bio: "Cross-platform mobile development expert. Creates seamless mobile experiences that users love across iOS and Android platforms.",
+    bio: "The Artist, a creative designer and has a keen eye in developing apps aesthetically.",
     imageUrl: "/developers/gian.png",
     github: "https://github.com/emilyzhang",
     linkedin: "https://linkedin.com/in/gianbaguna",
@@ -117,8 +124,10 @@ const developers = [
     intro: "Hi, Im",
     role: "Frontend Developer",
     location: "Iloilo City, Philippines",
-    experience: "5 years",
-    specialties: ["Figma", "React", "CSS/SCSS", "Design Systems"],
+    experience:
+      "MERN, PERN, Prisma, and Firebase stacks; REST/GraphQL APIs, authentication; Relational & Non-Relational Databases: MySQL, PostgreSQL, MongoDB, Firebase",
+    frameworks: ["React", "Angular", "Vue.js", "Svelte"],
+    specialties: ["React", "Next.js", "Node.js", "Express"],
     bio: "Creative designer and developer who bridges the gap between design and code. Passionate about creating intuitive user experiences and pixel-perfect implementations.",
     imageUrl: "/developers/wayne.png",
     github: "https://github.com/mariasantos",
@@ -131,35 +140,41 @@ const developers = [
     intro: "Hi, Im",
     role: "Frontend Developer",
     location: "Iloilo City, Philippines",
-    experience: "5 years",
-    specialties: ["Docker", "Kubernetes", "AWS", "CI/CD"],
-    bio: "Infrastructure specialist focused on automation, scalability, and reliability. Expert in containerization and cloud technologies for modern application deployment.",
+    experience: `Champion, during Philippine Blockchain Week 2025,
+    Product Owner, Haböl App (DTI),
+    President, Philippine Society of Software Engineers (2024–2025),
+    Cross-platform development with React Native and Expo
+    Realtime data with Firestore,
+    UI styling with Tailwind CSS & Nativewind
+    Cloud integration using Firebase`,
+    frameworks: ["Terraform", "Ansible", "Jenkins", "GitLab CI"],
+    specialties: ["Next.js", "React Native", "Node.js"],
+    bio: "The Achiever, always hiking and exploring new possibilities and pushing boundaries when it comes to Software Development.",
     imageUrl: "/developers/raine.png",
     github: "https://github.com/carlosrodriguez",
     linkedin: "https://linkedin.com/in/rainechristineperez",
     facebook: "https://facebook.com/rainechristineperez",
   },
-  {
-    id: 7,
-    name: "Paul!",
-    intro: "Hi, Im",
-    role: "Frontend Developer",
-    location: "Victorias City, Negros Occidental, Philippines",
-    experience: "5 years",
-    specialties: ["Next JS", "React Native", "Tailwind", "Figma"],
-    bio: "Quality assurance expert dedicated to ensuring software reliability and performance. Specializes in automated testing frameworks and continuous integration processes.",
-    imageUrl: "/developers/paul.png",
-    github: "https://github.com/lisachen",
-    linkedin: "https://linkedin.com/in/pauliancapanas",
-    facebook: "https://facebook.com/pauliancapanas",
-  },
+  // {
+  //   id: 7,
+  //   name: "Paul!",
+  //   intro: "Hi, Im",
+  //   role: "Frontend Developer",
+  //   location: "Victorias City, Negros Occidental, Philippines",
+  //   experience: "5 years",
+  //   frameworks: ["Next.js", "React Native", "Gatsby", "Nuxt.js"],
+  //   specialties: ["Next JS", "React Native", "Tailwind", "Figma"],
+  //   bio: "Quality assurance expert dedicated to ensuring software reliability and performance. Specializes in automated testing frameworks and continuous integration processes.",
+  //   imageUrl: "/developers/paul.png",
+  //   github: "https://github.com/lisachen",
+  //   linkedin: "https://linkedin.com/in/pauliancapanas",
+  //   facebook: "https://facebook.com/pauliancapanas",
+  // },
 ];
 
 export default function DevelopersPage() {
-  const [selectedDeveloper, setSelectedDeveloper] = useState<number | null>(
-    null
-  );
-  const dev = developers[selectedDeveloper ?? 0];
+  const [selectedDeveloper, setSelectedDeveloper] = useState<number>(0);
+  const dev = developers[selectedDeveloper];
 
   const techIcons: Record<string, ReactNode> = {
     React: <SiReact className="text-white w-4 h-4" />,
@@ -436,27 +451,22 @@ export default function DevelopersPage() {
               {/* Right Side */}
               <div className="lg:col-span-4 space-y-6 text-center lg:text-left">
                 <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-white tracking-wide flex items-center gap-2">
+                  <h3 className="text-2xl font-semibold text-white tracking-wide flex items-center gap-2">
                     <span className="text-[#00a7e0]">
-                      <MapPin className="w-5 h-5" />
+                      <MapPin className="w-6 h-6" />
                     </span>
                     Quick Details
                   </h3>
 
-                  <ul className="text-[#00a7e0] text-sm space-y-2">
-                    <li className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4" />
-                      <span className="font-medium text-white">
-                        Location:
-                      </span>{" "}
-                      {dev.location}
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Clock className="w-4 h-4" />
-                      <span className="font-medium text-white">
-                        Experience:
-                      </span>{" "}
-                      {dev.experience}
+                  <ul className="text-[#00a7e0] text-base space-y-3">
+                    <li className="flex items-start gap-3">
+                      <Clock className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                      <div className="flex flex-wrap items-baseline gap-1">
+                        <span className="font-medium text-white text-base">
+                          Experience:
+                        </span>
+                        <span className="text-[#00a7e0]">{dev.experience}</span>
+                      </div>
                     </li>
                   </ul>
                 </div>

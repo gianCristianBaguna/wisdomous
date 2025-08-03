@@ -78,7 +78,6 @@ const values = [
   },
 ];
 
-
 const offices = [
   {
     city: "Iloilo City",
@@ -209,9 +208,9 @@ export default function CompanyPage() {
   const [activeOffice, setActiveOffice] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const carouselRef = useRef<HTMLDivElement>(null);
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % team.length);
@@ -484,7 +483,7 @@ export default function CompanyPage() {
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Meet Our Leadership
+              Meet Our Team
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               The visionary leaders driving our company's mission and growth.
@@ -720,7 +719,11 @@ export default function CompanyPage() {
           </div>
         </div>
       </div>
-      {/* Clients Section */}
+
+
+      {/* Butang lang ni kung mag damo na ang Client ta -Paul */}
+      {/* Clients and Partnerships Section - Commented Out */}
+      {/* 
       <div className="relative z-10 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white/50 w-full">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -740,6 +743,7 @@ export default function CompanyPage() {
           </motion.div>
 
           {/* Desktop Grid - Hidden on mobile */}
+      {/*
           <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {quickStartSteps.map((step, index) => (
               <motion.div
@@ -767,9 +771,11 @@ export default function CompanyPage() {
           </div>
 
           {/* Mobile Carousel - Visible only on mobile */}
+      {/*
           <div className="sm:hidden mb-8">
             <div className="relative">
-              {/* Carousel Container */}
+              {/* Carousel Container */
+      /*
               <div ref={carouselRef} className="overflow-hidden rounded-2xl">
                 <div
                   className="flex transition-transform duration-500 ease-out"
@@ -813,6 +819,7 @@ export default function CompanyPage() {
             </div>
 
             {/* Dots Indicator */}
+      {/*
             <div className="flex justify-center mt-6 space-x-2">
               {Array.from({
                 length: Math.ceil(quickStartSteps.length / 2),
@@ -832,6 +839,7 @@ export default function CompanyPage() {
           </div>
         </div>
       </div>
+      */}
 
       {/* CTA Section */}
       <div className="relative z-10 bg-gradient-to-r from-blue-600 to-purple-600 py-16">
@@ -851,12 +859,7 @@ export default function CompanyPage() {
               opportunities or partner with us on your next project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/careers">
-                <button className="bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group">
-                  <span>View Careers</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
+              
               <Link href="/contact">
                 <button className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300">
                   Get in Touch
