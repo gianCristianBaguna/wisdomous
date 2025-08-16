@@ -96,18 +96,28 @@ const team = [
     bio: "Visionary leader with over 15 years of experience in the tech industry, driving innovation and strategic growth.",
     image: "/employees/Aljason.jpg",
     social: {
-      linkedin: "#",
-      twitter: "#",
+      linkedin: "https://github.com/marcusjohnson",
+      github: "https://linkedin.com/in/aljasonjavier",
     },
   },
   {
-    name: "Paul Ian",
+    name: "Paul",
     role: "CTO",
     bio: "Tech strategist and systems architect specializing in building scalable platforms and integrating cutting-edge technologies.",
     image: "/employees/Paul-4.jpg",
     social: {
-      linkedin: "#",
-      github: "#",
+      linkedin: "https://www.linkedin.com/in/paul-ian-capanas-b610b4180/",
+      github: "https://github.com/PaulIanCapanas",
+    },
+  },
+    {
+    name: "Riane",
+    role: "COO",
+    bio: "User-focused product strategist leading cross-functional teams to deliver impactful and market-ready solutions.",
+    image: "/employees/rainne.png",
+    social: {
+      linkedin: "https://www.linkedin.com/in/raine-christine-perez-1a856b368/",
+      github: "https://github.com/raynieee",
     },
   },
   {
@@ -117,17 +127,17 @@ const team = [
     image: "/employees/Cheska.JPG",
     social: {
       linkedin: "#",
-      twitter: "#",
+      github: "#",
     },
   },
   {
-    name: "Faithnina",
+    name: "Faith",
     role: "Marketing Executive Director",
     bio: "Dynamic marketing leader with a passion for brand strategy, campaign execution, and driving business growth through innovative marketing initiatives.",
     image: "/employees/Faith.jpg",
     social: {
-      linkedin: "#",
-      twitter: "#",
+      linkedin:"https://www.linkedin.com/in/faith-ni%C3%B1a-marie-magsael/#",
+      github: "#",
     },
   },
   {
@@ -136,7 +146,7 @@ const team = [
     bio: "Experienced full-stack developer focused on crafting robust codebases and mentoring development teams.",
     image: "/employees/Alvin.png",
     social: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/alvin-glenn-c-besa-01b402241/",
       github: "#",
     },
   },
@@ -145,16 +155,6 @@ const team = [
     role: "HR Manager",
     bio: "People-first HR leader dedicated to talent development, workplace culture, and organizational growth.",
     image: "/employees/danica.png",
-    social: {
-      linkedin: "#",
-      github: "#",
-    },
-  },
-  {
-    name: "Rianne",
-    role: "Product Manager",
-    bio: "User-focused product strategist leading cross-functional teams to deliver impactful and market-ready solutions.",
-    image: "/employees/rainne.png",
     social: {
       linkedin: "#",
       github: "#",
@@ -176,7 +176,7 @@ const team = [
     bio: "Agile product owner aligning business goals with user needs to guide successful product development.",
     image: "/employees/Allan.jpg",
     social: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/allan-loyd-pacete-2606aa226/",
       github: "#",
     },
   },
@@ -540,17 +540,6 @@ export default function CompanyPage() {
                           </div>
                         </Link>
                       )}
-                      {currentMember.social.twitter && (
-                        <Link
-                          href={currentMember.social.twitter}
-                          target="_blank"
-                          className="group"
-                        >
-                          <div className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 transition">
-                            <Twitter className="w-4 h-4 text-gray-600 group-hover:text-blue-500" />
-                          </div>
-                        </Link>
-                      )}
                       {currentMember.social.github && (
                         <Link
                           href={currentMember.social.github}
@@ -720,7 +709,6 @@ export default function CompanyPage() {
         </div>
       </div>
 
-
       {/* Butang lang ni kung mag damo na ang Client ta -Paul */}
       {/* Clients and Partnerships Section - Commented Out */}
       {/* 
@@ -859,7 +847,6 @@ export default function CompanyPage() {
               opportunities or partner with us on your next project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              
               <Link href="/contact">
                 <button className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300">
                   Get in Touch
