@@ -78,7 +78,6 @@ const values = [
   },
 ];
 
-
 const offices = [
   {
     city: "Iloilo City",
@@ -97,18 +96,28 @@ const team = [
     bio: "Visionary leader with over 15 years of experience in the tech industry, driving innovation and strategic growth.",
     image: "/employees/Aljason.jpg",
     social: {
-      linkedin: "#",
-      twitter: "#",
+      linkedin: "https://github.com/marcusjohnson",
+      github: "https://linkedin.com/in/aljasonjavier",
     },
   },
   {
-    name: "Paul Ian",
+    name: "Paul",
     role: "CTO",
     bio: "Tech strategist and systems architect specializing in building scalable platforms and integrating cutting-edge technologies.",
     image: "/employees/Paul-4.jpg",
     social: {
-      linkedin: "#",
-      github: "#",
+      linkedin: "https://www.linkedin.com/in/paul-ian-capanas-b610b4180/",
+      github: "https://github.com/PaulIanCapanas",
+    },
+  },
+    {
+    name: "Riane",
+    role: "COO",
+    bio: "User-focused product strategist leading cross-functional teams to deliver impactful and market-ready solutions.",
+    image: "/employees/rainne.png",
+    social: {
+      linkedin: "https://www.linkedin.com/in/raine-christine-perez-1a856b368/",
+      github: "https://github.com/raynieee",
     },
   },
   {
@@ -118,17 +127,17 @@ const team = [
     image: "/employees/Cheska.JPG",
     social: {
       linkedin: "#",
-      twitter: "#",
+      github: "#",
     },
   },
   {
-    name: "Faithnina",
+    name: "Faith",
     role: "Marketing Executive Director",
     bio: "Dynamic marketing leader with a passion for brand strategy, campaign execution, and driving business growth through innovative marketing initiatives.",
     image: "/employees/Faith.jpg",
     social: {
-      linkedin: "#",
-      twitter: "#",
+      linkedin:"https://www.linkedin.com/in/faith-ni%C3%B1a-marie-magsael/#",
+      github: "#",
     },
   },
   {
@@ -137,7 +146,7 @@ const team = [
     bio: "Experienced full-stack developer focused on crafting robust codebases and mentoring development teams.",
     image: "/employees/Alvin.png",
     social: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/alvin-glenn-c-besa-01b402241/",
       github: "#",
     },
   },
@@ -146,16 +155,6 @@ const team = [
     role: "HR Manager",
     bio: "People-first HR leader dedicated to talent development, workplace culture, and organizational growth.",
     image: "/employees/danica.png",
-    social: {
-      linkedin: "#",
-      github: "#",
-    },
-  },
-  {
-    name: "Rianne",
-    role: "Product Manager",
-    bio: "User-focused product strategist leading cross-functional teams to deliver impactful and market-ready solutions.",
-    image: "/employees/rainne.png",
     social: {
       linkedin: "#",
       github: "#",
@@ -177,7 +176,7 @@ const team = [
     bio: "Agile product owner aligning business goals with user needs to guide successful product development.",
     image: "/employees/Allan.jpg",
     social: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/allan-loyd-pacete-2606aa226/",
       github: "#",
     },
   },
@@ -209,9 +208,9 @@ export default function CompanyPage() {
   const [activeOffice, setActiveOffice] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const carouselRef = useRef<HTMLDivElement>(null);
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % team.length);
@@ -484,7 +483,7 @@ export default function CompanyPage() {
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Meet Our Leadership
+              Meet Our Team
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               The visionary leaders driving our company's mission and growth.
@@ -538,17 +537,6 @@ export default function CompanyPage() {
                         >
                           <div className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 transition">
                             <Linkedin className="w-4 h-4 text-gray-600 group-hover:text-blue-600" />
-                          </div>
-                        </Link>
-                      )}
-                      {currentMember.social.twitter && (
-                        <Link
-                          href={currentMember.social.twitter}
-                          target="_blank"
-                          className="group"
-                        >
-                          <div className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 transition">
-                            <Twitter className="w-4 h-4 text-gray-600 group-hover:text-blue-500" />
                           </div>
                         </Link>
                       )}
@@ -720,7 +708,10 @@ export default function CompanyPage() {
           </div>
         </div>
       </div>
-      {/* Clients Section */}
+
+      {/* Butang lang ni kung mag damo na ang Client ta -Paul */}
+      {/* Clients and Partnerships Section - Commented Out */}
+      {/* 
       <div className="relative z-10 py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white/50 w-full">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -740,6 +731,7 @@ export default function CompanyPage() {
           </motion.div>
 
           {/* Desktop Grid - Hidden on mobile */}
+      {/*
           <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {quickStartSteps.map((step, index) => (
               <motion.div
@@ -767,9 +759,11 @@ export default function CompanyPage() {
           </div>
 
           {/* Mobile Carousel - Visible only on mobile */}
+      {/*
           <div className="sm:hidden mb-8">
             <div className="relative">
-              {/* Carousel Container */}
+              {/* Carousel Container */
+      /*
               <div ref={carouselRef} className="overflow-hidden rounded-2xl">
                 <div
                   className="flex transition-transform duration-500 ease-out"
@@ -813,6 +807,7 @@ export default function CompanyPage() {
             </div>
 
             {/* Dots Indicator */}
+      {/*
             <div className="flex justify-center mt-6 space-x-2">
               {Array.from({
                 length: Math.ceil(quickStartSteps.length / 2),
@@ -832,6 +827,7 @@ export default function CompanyPage() {
           </div>
         </div>
       </div>
+      */}
 
       {/* CTA Section */}
       <div className="relative z-10 bg-gradient-to-r from-blue-600 to-purple-600 py-16">
@@ -851,12 +847,6 @@ export default function CompanyPage() {
               opportunities or partner with us on your next project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/careers">
-                <button className="bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group">
-                  <span>View Careers</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
               <Link href="/contact">
                 <button className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300">
                   Get in Touch
