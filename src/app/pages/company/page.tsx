@@ -93,27 +93,27 @@ const team = [
   {
     name: "Aljason",
     role: "CEO",
-    bio: "Visionary leader with over 15 years of experience in the tech industry, driving innovation and strategic growth.",
+    bio: "The Tactician, strategizes the company's road to success.",
     image: "/employees/Aljason.jpg",
     social: {
-      linkedin: "https://github.com/marcusjohnson",
+      linkedin: "https://www.linkedin.com/in/aljason-javier-79b2961a1/",
       github: "https://linkedin.com/in/aljasonjavier",
     },
   },
   {
     name: "Paul",
     role: "CTO",
-    bio: "Tech strategist and systems architect specializing in building scalable platforms and integrating cutting-edge technologies.",
+    bio: "The Visionary, focuses on the innovative solutions and long term goals of the company.",
     image: "/employees/Paul-4.jpg",
     social: {
       linkedin: "https://www.linkedin.com/in/paul-ian-capanas-b610b4180/",
       github: "https://github.com/PaulIanCapanas",
     },
   },
-    {
+  {
     name: "Riane",
     role: "COO",
-    bio: "User-focused product strategist leading cross-functional teams to deliver impactful and market-ready solutions.",
+    bio: "The Organizer, ensures the productivity and efficiency of the company'soperations.",
     image: "/employees/rainne.png",
     social: {
       linkedin: "https://www.linkedin.com/in/raine-christine-perez-1a856b368/",
@@ -123,61 +123,61 @@ const team = [
   {
     name: "Cheska",
     role: "Executive Secretary",
-    bio: "Highly organized professional ensuring seamless communication, scheduling, and executive-level support.",
+    bio: "The Rapporteur, facilitates the flow of information and communication within the company.",
     image: "/employees/Cheska.JPG",
     social: {
-      linkedin: "#",
-      github: "#",
+      linkedin: "",
+      github: "",
     },
   },
   {
     name: "Faith",
     role: "Marketing Executive Director",
-    bio: "Dynamic marketing leader with a passion for brand strategy, campaign execution, and driving business growth through innovative marketing initiatives.",
+    bio: "The Sales Expert, strategizes the company's marketing initiatives.",
     image: "/employees/Faith.jpg",
     social: {
-      linkedin:"https://www.linkedin.com/in/faith-ni%C3%B1a-marie-magsael/#",
-      github: "#",
+      linkedin: "https://www.linkedin.com/in/faith-ni%C3%B1a-marie-magsael/#",
+      github: "",
     },
   },
   {
     name: "Alvin",
     role: "Senior Developer",
-    bio: "Experienced full-stack developer focused on crafting robust codebases and mentoring development teams.",
+    bio: "The Backbone of our Development Team, More than 5 years of experience in the industry, Very passionate in coding and mentoring Junior Developers.",
     image: "/employees/Alvin.png",
     social: {
       linkedin: "https://www.linkedin.com/in/alvin-glenn-c-besa-01b402241/",
-      github: "#",
+      github: "",
     },
   },
   {
     name: "Danica",
     role: "HR Manager",
-    bio: "People-first HR leader dedicated to talent development, workplace culture, and organizational growth.",
+    bio: "The Catalyst, Ensures the overall company's workforce aligns with the company's goals.",
     image: "/employees/danica.png",
     social: {
-      linkedin: "#",
-      github: "#",
+      linkedin: "",
+      github: "",
     },
   },
   {
     name: "Cloyd",
     role: "Graphic Designer",
-    bio: "Creative visual storyteller with a flair for brand identity, UI/UX design, and engaging digital content.",
+    bio: "The Artist, works with the company's creative design with his artful creativity.",
     image: "/employees/Cloyd-3.jpg",
     social: {
-      linkedin: "#",
-      github: "#",
+      linkedin: "",
+      github: "",
     },
   },
   {
     name: "Allan",
     role: "Product Owner",
-    bio: "Agile product owner aligning business goals with user needs to guide successful product development.",
+    bio: "The Manager, acts as the voice of the customers and ensures their needs are met and prioritized in the development process.",
     image: "/employees/Allan.jpg",
     social: {
       linkedin: "https://www.linkedin.com/in/allan-loyd-pacete-2606aa226/",
-      github: "#",
+      github: "",
     },
   },
 ];
@@ -529,28 +529,30 @@ export default function CompanyPage() {
                       </p>
                     </div>
                     <div className="flex justify-center gap-3">
-                      {currentMember.social.linkedin && (
-                        <Link
-                          href={currentMember.social.linkedin}
-                          target="_blank"
-                          className="group"
-                        >
-                          <div className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 transition">
-                            <Linkedin className="w-4 h-4 text-gray-600 group-hover:text-blue-600" />
-                          </div>
-                        </Link>
-                      )}
-                      {currentMember.social.github && (
-                        <Link
-                          href={currentMember.social.github}
-                          target="_blank"
-                          className="group"
-                        >
-                          <div className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition">
-                            <Github className="w-4 h-4 text-gray-600 group-hover:text-gray-800" />
-                          </div>
-                        </Link>
-                      )}
+                      {currentMember.social.linkedin &&
+                        currentMember.social.linkedin.trim() !== "" && (
+                          <Link
+                            href={currentMember.social.linkedin}
+                            target="_blank"
+                            className="group"
+                          >
+                            <div className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 transition">
+                              <Linkedin className="w-4 h-4 text-gray-600 group-hover:text-blue-600" />
+                            </div>
+                          </Link>
+                        )}
+                      {currentMember.social.github &&
+                        currentMember.social.github.trim() !== "" && (
+                          <Link
+                            href={currentMember.social.github}
+                            target="_blank"
+                            className="group"
+                          >
+                            <div className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition">
+                              <Github className="w-4 h-4 text-gray-600 group-hover:text-gray-800" />
+                            </div>
+                          </Link>
+                        )}
                     </div>
                   </div>
                 </motion.div>
