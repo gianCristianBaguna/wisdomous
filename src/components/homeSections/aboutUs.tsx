@@ -19,7 +19,7 @@ const fadeInUpVariant: Variants = {
 }
 
 const stats = [
-  { number: "10+", label: "Companies Trust Us", icon: <Users className="w-6 h-6 text-white" /> },
+  { number: "5", label: "Companies Trust Us", icon: <Users className="w-6 h-6 text-white" /> },
   { number: "99.9%", label: "Uptime Guarantee", icon: <Shield className="w-6 h-6 text-white" /> },
   { number: "10TB+", label: "Data Processed Daily", icon: <Zap className="w-6 h-6 text-white" /> },
   { number: "24/7", label: "Expert Support", icon: <Award className="w-6 h-6 text-white" /> },

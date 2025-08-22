@@ -30,23 +30,23 @@ import { Navbar } from "@/components/navbar";
 
 const stats = [
   {
-    label: "Years in Business",
-    value: "1+",
+    label: "Year in Business",
+    value: "1",
     icon: <Calendar className="w-6 h-6 text-blue-600" />,
   },
   {
     label: "Happy Clients",
-    value: "20+",
+    value: "5",
     icon: <Users className="w-6 h-6 text-green-600" />,
   },
   {
     label: "Projects Completed",
-    value: "20+",
+    value: "5",
     icon: <Rocket className="w-6 h-6 text-purple-600" />,
   },
   {
     label: "Countries Served",
-    value: "3+",
+    value: "2",
     icon: <Globe className="w-6 h-6 text-orange-600" />,
   },
 ];
@@ -373,9 +373,9 @@ export default function CompanyPage() {
                 </p>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                   Our Vision
-                </h3>
+                </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   To be the global leader in innovative software solutions,
                   recognized for our technical excellence, client-centric
