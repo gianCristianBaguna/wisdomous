@@ -224,7 +224,7 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                <Link href="/contact">
+                <Link href="/pages/contact">
                   <button className="inline-flex items-center gap-3 bg-[#00a7e0] hover:bg-[#1029A2] text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
                     <span>{slides[currentSlide].ctaText}</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

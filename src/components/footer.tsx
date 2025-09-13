@@ -16,7 +16,7 @@ const FacebookIcon = () => (
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#0a0f1a] text-white px-6 sm:px-20 py-10 border-t border-white/10 z-10 ">
+    <footer className="relative bg-[#0a0f1a] text-white px-6 sm:px-20 py-10 border-t border-white/10 z-10 overflow-hidden mt-8">
       <div className="absolute top-[-150px] right-[-100px] w-[300px] h-[300px] bg-[#00a7e0]/20 rounded-full blur-2xl z-0"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
@@ -26,13 +26,6 @@ const Footer = () => {
         </div>
 
         <div className="flex gap-6">
-          <Link
-            href="wisdomoustech@gmail.com"
-            className="hover:text-[#00a7e0] transition-colors"
-            aria-label="Email"
-          >
-            <Mail className="w-5 h-5" />
-          </Link>
           <Link
             href="https://www.facebook.com/share/18mjZ3ExFK/?mibextid=wwXIfr"
             target="_blank"
@@ -46,8 +39,10 @@ const Footer = () => {
             className="text-sm hover:text-[#00a7e0] transition-colors"
             aria-label="Phone"
           >
-            +639-96-774-475
-
+            <div className="flex flex-col text-sm hover:text-[#00a7e0] transition-colors" aria-label="Contact">
+              <span>wisdomoustech@gmail.com</span>
+              <span>+639-496-774-475</span>
+            </div>
           </div>
         </div>
       </div>

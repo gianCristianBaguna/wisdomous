@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, ReactNode } from "react";
+import Footer from "@/components/footer";
 import { motion } from "framer-motion";
 import {
   Github,
@@ -617,6 +618,7 @@ export default function DevelopersPage() {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

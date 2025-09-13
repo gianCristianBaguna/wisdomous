@@ -111,7 +111,7 @@ const team = [
     },
   },
   {
-    name: "Riane",
+    name: "Raine",
     role: "COO",
     bio: "The Organizer, ensures the productivity and efficiency of the company'soperations.",
     image: "/employees/rainne.png",
@@ -174,7 +174,7 @@ const team = [
     name: "Allan",
     role: "Product Owner",
     bio: "The Manager, acts as the voice of the customers and ensures their needs are met and prioritized in the development process.",
-    image: "/employees/Allan.jpg",
+    image: "/employees/Allan-2.jpg",
     social: {
       linkedin: "https://www.linkedin.com/in/allan-loyd-pacete-2606aa226/",
       github: "",
