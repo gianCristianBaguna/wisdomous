@@ -265,7 +265,7 @@ export const HeroSection = () => {
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 text-[#00a7e0] font-medium">
                       <span>
-                        <a href="">Contact Us</a>
+                        <a href="/pages/contact">Contact Us</a>
                       </span>
                       <ArrowRight className="w-4 h-4" />
                     </div>

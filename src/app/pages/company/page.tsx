@@ -92,7 +92,7 @@ const offices = [
 const team = [
   {
     name: "Aljason",
-    role: "CEO",
+    role: "Founder & CEO",
     bio: "The Tactician, strategizes the company's road to success.",
     image: "/employees/Aljason.jpg",
     social: {
@@ -100,17 +100,7 @@ const team = [
       github: "https://linkedin.com/in/aljasonjavier",
     },
   },
-  {
-    name: "Paul",
-    role: "CTO",
-    bio: "The Visionary, focuses on the innovative solutions and long term goals of the company.",
-    image: "/employees/Paul-4.jpg",
-    social: {
-      linkedin: "https://www.linkedin.com/in/paul-ian-capanas-b610b4180/",
-      github: "https://github.com/PaulIanCapanas",
-    },
-  },
-  {
+    {
     name: "Raine",
     role: "COO",
     bio: "The Organizer, ensures the productivity and efficiency of the company'soperations.",
@@ -118,6 +108,26 @@ const team = [
     social: {
       linkedin: "https://www.linkedin.com/in/raine-christine-perez-1a856b368/",
       github: "https://github.com/raynieee",
+    },
+  },
+  {
+    name: "Paul",
+    role: "Co-Founder",
+    bio: "The Visionary, focuses on the innovative solutions and long term goals of the company.",
+    image: "/employees/Paul-4.jpg",
+    social: {
+      linkedin: "https://www.linkedin.com/in/paul-ian-capanas-b610b4180/",
+      github: "https://github.com/PaulIanCapanas",
+    },
+  },
+    {
+    name: "Allan",
+    role: "Co-Founder",
+    bio: "The Manager, acts as the voice of the customers and ensures their needs are met and prioritized in the development process.",
+    image: "/employees/Allan-2.jpg",
+    social: {
+      linkedin: "https://www.linkedin.com/in/allan-loyd-pacete-2606aa226/",
+      github: "",
     },
   },
   {
@@ -151,32 +161,22 @@ const team = [
     },
   },
   {
+    name: "Thelanny",
+    role: "Graphic Designer",
+    bio: "The Artist, works with the company's creative design with his artful creativity.",
+    image: "/employees/Thel.jpg",
+    social: {
+      linkedin: "",
+      github: "",
+    },
+  },
+    {
     name: "Danica",
     role: "HR Manager",
     bio: "The Catalyst, Ensures the overall company's workforce aligns with the company's goals.",
     image: "/employees/danica.png",
     social: {
       linkedin: "",
-      github: "",
-    },
-  },
-  {
-    name: "Cloyd",
-    role: "Graphic Designer",
-    bio: "The Artist, works with the company's creative design with his artful creativity.",
-    image: "/employees/Cloyd-3.jpg",
-    social: {
-      linkedin: "",
-      github: "",
-    },
-  },
-  {
-    name: "Allan",
-    role: "Product Owner",
-    bio: "The Manager, acts as the voice of the customers and ensures their needs are met and prioritized in the development process.",
-    image: "/employees/Allan-2.jpg",
-    social: {
-      linkedin: "https://www.linkedin.com/in/allan-loyd-pacete-2606aa226/",
       github: "",
     },
   },
@@ -849,7 +849,7 @@ export default function CompanyPage() {
               opportunities or partner with us on your next project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <Link href="/pages/contact">
                 <button className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300">
                   Get in Touch
                 </button>
