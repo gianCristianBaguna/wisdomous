@@ -130,6 +130,16 @@ const team = [
       github: "",
     },
   },
+    {
+    name: "Alvin",
+    role: "CTO",
+    bio: "The Backbone of our Development Team, More than 5 years of experience in the industry, Very passionate in coding and mentoring Junior Developers.",
+    image: "/employees/Alvin.png",
+    social: {
+      linkedin: "https://www.linkedin.com/in/alvin-glenn-c-besa-01b402241/",
+      github: "",
+    },
+  },
   {
     name: "Cheska",
     role: "Executive Secretary",
@@ -147,16 +157,6 @@ const team = [
     image: "/employees/Faith.jpg",
     social: {
       linkedin: "https://www.linkedin.com/in/faith-ni%C3%B1a-marie-magsael/#",
-      github: "",
-    },
-  },
-  {
-    name: "Alvin",
-    role: "Senior Developer",
-    bio: "The Backbone of our Development Team, More than 5 years of experience in the industry, Very passionate in coding and mentoring Junior Developers.",
-    image: "/employees/Alvin.png",
-    social: {
-      linkedin: "https://www.linkedin.com/in/alvin-glenn-c-besa-01b402241/",
       github: "",
     },
   },
